@@ -1,6 +1,4 @@
 {
     "userspace_version": "1.1",
-    "build_targets": [
-        ["boardsource/unicorne", "qmk"]
-    ]
+    "build_targets": []
 }
