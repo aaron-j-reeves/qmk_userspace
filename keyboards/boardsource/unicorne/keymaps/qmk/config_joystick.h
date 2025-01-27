@@ -4,9 +4,7 @@
 #if defined(POINTING_DEVICE_DRIVER_ANALOG_JOYSTICK)
 
 // Joystick Hardware Configuration
-#define ANALOG_JOYSTICK_Y_AXIS_PIN GP27
-#define ANALOG_JOYSTICK_X_AXIS_PIN GP26
-#define POINTING_DEVICE_INVERT_Y
+#undef POINTING_DEVICE_INVERT_X
 #define POINTING_DEVICE_RIGHT
 
 // Joystick Movement Settings
