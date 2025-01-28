@@ -1,6 +1,7 @@
 // oled.c
 #include QMK_KEYBOARD_H
 #include "layers.h"
+#include "caps_word.h"
 
 #ifdef OLED_ENABLE
 
