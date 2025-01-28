@@ -1,6 +1,9 @@
 #pragma once
 #include "quantum.h"
 
+// Define the total number of combos
+//#define COMBO_COUNT 10
+
 // Define combo indexes
 enum combos {
     COMBO_1, // ESC + Q -> 1
@@ -12,7 +15,8 @@ enum combos {
     COMBO_7, // U + I -> 7
     COMBO_8, // I + O -> 8
     COMBO_9, // O + P -> 9
-    COMBO_0  // P + Backspace -> 0
+    COMBO_0,  // P + Backspace -> 0
+    COMBO_COUNT // number of combos
 };
 
 // Declare arrays for each combo
