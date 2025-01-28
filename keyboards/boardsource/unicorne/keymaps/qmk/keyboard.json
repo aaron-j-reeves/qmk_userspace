@@ -1,4 +1,5 @@
 {
+    "keymap": "qmk",
     "features": {
         "audio": true,
         "bootmagic": true,
