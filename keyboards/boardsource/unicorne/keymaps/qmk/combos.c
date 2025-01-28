@@ -1,4 +1,4 @@
-#include QMK_KEYBOARD_H
+#include "quantum.c"
 #include "combos.h"
 
 // Define key combo arrays
@@ -14,7 +14,7 @@ const uint16_t PROGMEM combo_o_p[] = {KC_O, KC_P, COMBO_END};
 const uint16_t PROGMEM combo_p_bsp[] = {KC_P, KC_BSPC, COMBO_END};
 
 // Map combos to their resulting keycodes
-combo_t key_combos[COMBO_COUNT] = {
+combo_t combos[COMBO_COUNT] = {
     [COMBO_1] = COMBO(combo_esc_q, KC_1),
     [COMBO_2] = COMBO(combo_q_w, KC_2),
     [COMBO_3] = COMBO(combo_w_e, KC_3),

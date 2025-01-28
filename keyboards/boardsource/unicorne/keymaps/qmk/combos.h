@@ -1,9 +1,8 @@
 #pragma once
-
-#include QMK_KEYBOARD_H
+#include "quantum.h"
 
 // Define combo indexes
-enum combo_keycodes {
+enum combos {
     COMBO_1, // ESC + Q -> 1
     COMBO_2, // Q + W -> 2
     COMBO_3, // W + E -> 3
