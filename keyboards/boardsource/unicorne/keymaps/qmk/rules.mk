@@ -1,7 +1,6 @@
 # rules.mk
 SRC += oled.c
 SRC += layers.c
-SRC += combos.c
 
 ########################################################
 #  enable one or the other, NOT BOTH
