@@ -16,7 +16,6 @@ enum combos {
     COMBO_8, // I + O -> 8
     COMBO_9, // O + P -> 9
     COMBO_0,  // P + Backspace -> 0
-    COMBO_COUNT // number of combos
 };
 
 // Declare arrays for each combo
@@ -32,4 +31,5 @@ extern const uint16_t PROGMEM combo_o_p[];
 extern const uint16_t PROGMEM combo_p_bsp[];
 
 // Declare the combo map array
-extern combo_t key_combos[COMBO_COUNT];
+extern const combo_t combos[];
+extern uint16_t COMBO_LEN;
