@@ -1,8 +1,5 @@
 #pragma once
-#include "quantum.h"
-
-// Define the total number of combos
-//#define COMBO_COUNT 10
+#include QMK_KEYBOARD_H
 
 // Define combo indexes
 enum combos {
@@ -32,4 +29,3 @@ extern const uint16_t PROGMEM combo_p_bsp[];
 
 // Declare the combo map array
 extern const combo_t combos[];
-extern uint16_t COMBO_LEN;

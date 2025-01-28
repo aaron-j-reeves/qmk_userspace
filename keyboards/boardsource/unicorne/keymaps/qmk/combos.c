@@ -1,3 +1,4 @@
+#include QMK_KEYBOARD_H
 #include "combos.h"
 
 // Define key combo arrays
@@ -25,4 +26,3 @@ combo_t combos[] = {
     [COMBO_9] = COMBO(combo_o_p, KC_9),
     [COMBO_0] = COMBO(combo_p_bsp, KC_0)
 };
-uint16_t COMBO_LEN = COMBO_LENGTH;
