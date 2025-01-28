@@ -13,7 +13,8 @@
         "caps_word": true,
         "command": false,
         "pointing_device": true,
-        "key_override": true
+        "key_override": true,
+        "combo": true
     },
     "tapping": {
         "permissive_hold": true,
