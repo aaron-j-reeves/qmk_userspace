@@ -10,7 +10,6 @@
         "oled": true,
         "rgb_matrix": true,
         "layer_lock": true,
-        "caps_word": true,
         "command": false,
         "pointing_device": true,
         "key_override": true,
