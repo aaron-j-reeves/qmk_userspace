@@ -6,7 +6,6 @@
 #include "config_mousekey.h" // mousekey configurations
 #include "config_rgb.h" // rgb configurations
 #include "config_touchpad.h" // cirque touchpad configurations
-#include 
 
 #define SPLIT_POINTING_ENABLE
 #define SPLIT_TRANSPORT_MIRROR

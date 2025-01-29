@@ -3,6 +3,10 @@
 
 #if defined(RGB_MATRIX_ENABLE)
 
+#undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#undef RGB_MATRIX_DEFAULT_MODE
+#undef RGB_MATRIX_SLEEP
+
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 200                       // limits maximum brightness of LEDs to 180 out of 255. If not defined maximum brightness is set to 255
 #define RGB_MATRIX_DEFAULT_ON true                              // Sets the default enabled state, if none has been set
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_RIVERFLOW            // Sets the default mode, if none has been set

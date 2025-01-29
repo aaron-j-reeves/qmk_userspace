@@ -91,7 +91,6 @@
             "saturation": 255,
             "speed": 100
         },
-        "max_brightness": 200,
         "layout": [
             {"x": 85, "y": 16, "flags": 2},
             {"x": 50, "y": 13, "flags": 2},
