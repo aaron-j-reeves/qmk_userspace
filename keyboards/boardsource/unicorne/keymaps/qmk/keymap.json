@@ -1,5 +1,69 @@
 {
+    "keyboard": "boardsource/unicorne",
     "keymap": "qmk",
+    "layout": "LAYOUT_split_3x6_3",
+    "layers": [
+        [
+            "LT(_SYMB, KC_ESC)",    "KC_Q", "KC_W", "KC_E",     "KC_R",     "KC_T",           "KC_Y",     "KC_U",     "KC_I",     "KC_O",       "KC_P",        "KC_BSPC",
+            "SYMBTAB",           "KC_A",     "KC_S",     "KC_D",     "KC_F",     "KC_G",           "KC_H",     "KC_J",     "KC_K",     "KC_L",       "KC_SCLN",     "LT(_FUNC, KC_QUOTE)",
+            "SC_LSPO",           "KC_Z",     "KC_X",     "KC_C",     "KC_V",     "KC_B",           "KC_N",     "KC_M",     "KC_COMMA", "KC_DOT",     "KC_SLASH",    "SC_RSPC",
+                                                    "LCTL_T(KC_DEL)", "LALT_T(KC_BSPC)", "LT(_NUMB, KC_ENTER)",  "LT(_NAVI, KC_SPACE)", "RGUI_T(KC_PSCR)", "MEH_T(KC_F24)"
+        ],
+        [
+            "_______", "KC_B",     "KC_L",     "KC_D",     "KC_C",     "KC_V",           "KC_J",     "KC_Y",     "KC_O",     "KC_U",       "KC_COMMA", "_______",
+            "_______", "KC_N",     "KC_R",     "KC_T",     "KC_S",     "KC_G",           "KC_P",     "KC_H",     "KC_A",     "KC_E",       "KC_I",     "LT(_FUNC, KC_SLASH)",
+            "_______", "KC_X",     "KC_Q",     "KC_M",     "KC_W",     "KC_Z",           "KC_K",     "KC_F",     "KC_QUOTE", "KC_SCLN",    "KC_DOT",   "_______",
+                                                "_______", "_______", "_______",     "_______", "_______", "_______"
+        ],
+        [
+            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
+            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
+            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
+                                                "_______", "KC_BTN2", "KC_BTN1",    "KC_BTN1", "KC_BTN2", "_______"
+        ],
+        [
+            "KC_GRAVE",      "C(S(KC_P))",  "LSA(KC_DOWN)",  "LALT(KC_UP)",   "LSA(KC_UP)",  "LCTL(KC_D)",      "KC_GRAVE", "KC_7", "KC_8", "KC_9", "KC_KP_MINUS", "KC_BSPC",
+            "MO(_LOWR)",     "LCTL(KC_A)",  "KC_LEFT",       "LALT(KC_DOWN)", "KC_RIGHT",    "C(S(KC_L))",      "KC_LBRC",  "KC_4", "KC_5", "KC_6", "KC_RBRC",     "KC_DELETE",
+            "KC_CAPS",       "LCTL(KC_Z)",  "LCTL(KC_X)",    "LCTL(KC_C)",    "LCTL(KC_V)",  "LCTL(KC_Y)",      "KC_EQUAL", "KC_1", "KC_2", "KC_3", "KC_BSLS",     "KC_KP_COMMA",
+                                                    "KC_PGUP", "KC_PGDN", "_______",     "KC_MINUS", "KC_0", "KC_DOT"
+        ],
+        [
+            "KC_GRAVE",    "LCTL(KC_Q)",  "LCTL(KC_W)",  "LCTL(KC_E)",  "LCTL(KC_R)",  "LCTL(KC_T)",     "LSFT(KC_GRAVE)", "LSFT(KC_7)", "LSFT(KC_8)", "LSFT(KC_9)", "LSFT(KC_0)",    "LCTL(KC_BSPC)",
+            "_______",     "LCTL(KC_A)",  "LCTL(KC_S)",  "LCTL(KC_D)",  "LCTL(KC_F)",  "LCTL(KC_G)",     "LSFT(KC_LBRC)",  "LSFT(KC_4)", "LSFT(KC_5)", "LSFT(KC_6)", "LSFT(KC_RBRC)", "LSFT(KC_QUOTE)",
+            "CW_TOGG",     "LCTL(KC_Z)",  "LCTL(KC_X)",  "LCTL(KC_C)",  "LCTL(KC_V)",  "LCTL(KC_B)",     "LSFT(KC_EQUAL)", "LSFT(KC_1)", "LSFT(KC_2)", "LSFT(KC_3)", "LSFT(KC_BSLS)", "LSFT(KC_SLASH)",
+                                                "LCTL(KC_C)", "LCTL(KC_V)", "MO(_LOWR)",     "LSFT(KC_MINUS)", "LSFT(KC_COMMA)", "LSFT(KC_DOT)"
+        ],
+        [
+            "LSFT(KC_UP)",     "KC_HOME",       "LCTL(KC_LEFT)",   "KC_UP",        "LCTL(KC_RIGHT)", "KC_END",        "KC_ACL0", "KC_WH_L", "KC_MS_U", "KC_WH_R", "KC_ACL0", "KC_ACL0",
+            "KC_TAB",          "LSFT(KC_LEFT)", "KC_LEFT",         "KC_DOWN",      "KC_RIGHT",       "LSFT(KC_RIGHT)", "KC_WH_U", "KC_MS_L", "KC_MS_D", "KC_MS_R", "KC_BTN5", "MO(_RAIS)",
+            "LSFT(KC_TAB)",    "LSFT(KC_HOME)", "RCS(KC_LEFT)",    "LSFT(KC_DOWN)", "RCS(KC_RIGHT)", "LSFT(KC_END)",  "KC_WH_D", "KC_BTN1", "KC_BTN3", "KC_BTN2", "KC_BTN4", "_______",
+                                                    "LCTL(KC_C)", "LCTL(KC_V)", "KC_ENTER",     "_______", "_______", "_______"
+        ],
+        [
+            "_______",    "KC_NUM",    "KC_F7",   "KC_F8",   "KC_F9",    "KC_F10",        "RGB_RMOD", "RGB_MOD", "KC_VOLU", "RGB_TOG", "CG_TOGG", "_______",
+            "_______",    "KC_SCRL",   "KC_F4",   "KC_F5",   "KC_F6",    "KC_F11",        "RGB_SPI",  "KC_MPRV", "KC_VOLD", "KC_MNXT", "AG_TOGG", "_______",
+            "OSM(MOD_LSFT)", "KC_PAUSE", "KC_F1", "KC_F2", "KC_F3", "KC_F12",          "RGB_SPD",  "KC_MSTP", "KC_MUTE", "KC_MPLY", "AU_TOGG", "_______",
+                                            "OSM(MOD_LCTL)", "OSM(MOD_LALT)", "_______",     "MO(_LOWR)", "OSM(MOD_LGUI)", "_______"
+        ],
+        [
+            "_______",         "_______",         "LGUI(KC_L)",    "LCA(KC_DEL)",   "RCS(KC_RIGHT)", "_______",        "_______", "_______", "SECURE", "_______", "_______", "_______",
+            "_______",         "_______",         "_______",       "_______",       "QK_BOOT",       "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
+            "_______",         "_______",         "_______",       "_______",       "_______",       "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
+                                                    "_______", "_______", "_______",     "MO(_MENU)", "_______", "_______"
+        ],
+        [
+            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
+            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "QK_BOOT", "_______", "_______", "_______", "_______",
+            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
+                                                    "_______", "_______", "MO(_MENU)",     "_______", "_______", "_______"
+        ],
+        [
+            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
+            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
+            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
+                                                    "_______", "_______", "_______",     "_______", "_______", "_______"
+        ]
+    ],
     "features": {
         "audio": true,
         "bootmagic": true,
@@ -170,5 +234,6 @@
         "max_speed": 2,
         "time_to_max": 100,
         "wheel_delay": 1
-    }
+    },
+
 }
