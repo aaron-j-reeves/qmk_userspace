@@ -18,18 +18,6 @@ enum combos {
     COMBO_0,  // P + Backspace -> 0
 };
 
-// Declare arrays for each combo
-extern const uint16_t PROGMEM combo_esc_q[];
-extern const uint16_t PROGMEM combo_q_w[];
-extern const uint16_t PROGMEM combo_w_e[];
-extern const uint16_t PROGMEM combo_e_r[];
-extern const uint16_t PROGMEM combo_r_t[];
-extern const uint16_t PROGMEM combo_y_t[];
-extern const uint16_t PROGMEM combo_u_i[];
-extern const uint16_t PROGMEM combo_i_o[];
-extern const uint16_t PROGMEM combo_o_p[];
-extern const uint16_t PROGMEM combo_p_bsp[];
-
 // Declare the combo map array
 extern const combo_t combos[];
 
