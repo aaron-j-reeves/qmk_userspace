@@ -1,10 +1,13 @@
 {
     "keyboard": "boardsource/unicorne",
     "keymap": "qmk",
+    "keycodes": {
+        "LTSYESC": "LT(_SYMB, KC_ESC)"
+    },
     "layout": "LAYOUT_split_3x6_3",
     "layers": [
         [
-            "LT(_SYMB, KC_ESC)",    "KC_Q", "KC_W", "KC_E",     "KC_R",     "KC_T",           "KC_Y",     "KC_U",     "KC_I",     "KC_O",       "KC_P",        "KC_BSPC",
+            "LTSYESC","KC_Q", "KC_W", "KC_E",     "KC_R",     "KC_T",           "KC_Y",     "KC_U",     "KC_I",     "KC_O",       "KC_P",        "KC_BSPC",
             "SYMBTAB",           "KC_A",     "KC_S",     "KC_D",     "KC_F",     "KC_G",           "KC_H",     "KC_J",     "KC_K",     "KC_L",       "KC_SCLN",     "LT(_FUNC, KC_QUOTE)",
             "SC_LSPO",           "KC_Z",     "KC_X",     "KC_C",     "KC_V",     "KC_B",           "KC_N",     "KC_M",     "KC_COMMA", "KC_DOT",     "KC_SLASH",    "SC_RSPC",
                                                     "LCTL_T(KC_DEL)", "LALT_T(KC_BSPC)", "LT(_NUMB, KC_ENTER)",  "LT(_NAVI, KC_SPACE)", "RGUI_T(KC_PSCR)", "MEH_T(KC_F24)"
