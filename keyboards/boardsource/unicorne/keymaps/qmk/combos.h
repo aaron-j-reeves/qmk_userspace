@@ -1,5 +1,8 @@
+// combos.h
 #pragma once
 #include QMK_KEYBOARD_H
+
+#if defined(COMBO_ENABLE)
 
 // Define combo indexes
 enum combos {
@@ -29,3 +32,5 @@ extern const uint16_t PROGMEM combo_p_bsp[];
 
 // Declare the combo map array
 extern const combo_t combos[];
+
+#endif

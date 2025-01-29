@@ -1,9 +1,8 @@
 // keymap.c
 #include QMK_KEYBOARD_H
-#include "audio.h"
 #include "song_list.h"
-#include "user_song_list.h"
 #include "layers.h"
+#include "combos.h"
 
 // Enum for custom keycodes
 enum custom_keycodes {
