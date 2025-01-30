@@ -1,242 +1,298 @@
 {
+    "version": "1",
+    "author": "aaronjreeves@gmail.com",
     "keyboard": "boardsource/unicorne",
     "keymap": "qmk",
-    "keycodes": {
-        "LTSYESC": "LT(_SYMB, KC_ESC)"
-    },
     "layout": "LAYOUT_split_3x6_3",
-    "layers": [
+    "config": {
+        "features": {
+            "audio": true,
+            "bootmagic": true,
+            "encoder": false,
+            "extrakey": true,
+            "mousekey": true,
+            "nkro": true,
+            "oled": true,
+            "rgb_matrix": true,
+            "layer_lock": true,
+            "command": false,
+            "pointing_device": true,
+            "key_override": true,
+            "combo": true,
+            "send_string": true,
+            "caps_word": true
+        },
+        "tapping": {
+            "permissive_hold": true,
+            "term": 250,
+            "toggle": 3
+        },
+        "split": {
+            "transport": {
+                "sync": {
+                    "activity": false,
+                    "detected_os": false,
+                    "haptic": false,
+                    "layer_state": true,
+                    "indicators": true,
+                    "matrix_state": false,
+                    "modifiers": true,
+                    "oled": true,
+                    "st7565": false,
+                    "wpm": false
+                }
+            }
+        },
+        "rgb_matrix": {
+            "animations": {
+                "none": true,
+                "solid_color": true,
+                "alphas_mods": true,
+                "gradient_up_down": true,
+                "gradient_left_right": true,
+                "breathing": true,
+                "band_val": true,
+                "band_pinwheel_val": true,
+                "band_spiral_val": true,
+                "cycle_all": true,
+                "cycle_left_right": true,
+                "cycle_up_down": true,
+                "cycle_out_in": true,
+                "cycle_out_in_dual": true,
+                "rainbow_moving_chevron": true,
+                "cycle_pinwheel": true,
+                "cycle_spiral": true,
+                "dual_beacon": true,
+                "rainbow_beacon": true,
+                "rainbow_pinwheels": true,
+                "flower_blooming": true,
+                "raindrops": true,
+                "jellybean_raindrops": true,
+                "pixel_fractal": true,
+                "pixel_flow": true,
+                "pixel_rain": true,
+                "typing_heatmap": true,
+                "digital_rain": true,
+                "solid_reactive_simple": true,
+                "solid_reactive": true,
+                "solid_reactive_wide": true,
+                "solid_reactive_multiwide": true,
+                "solid_reactive_cross": true,
+                "solid_reactive_multicross": true,
+                "solid_reactive_nexus": true,
+                "solid_reactive_multinexus": true,
+                "splash": true,
+                "multisplash": true,
+                "solid_splash": true,
+                "solid_multisplash": true,
+                "starlight": true,
+                "starlight_dual_hue": true,
+                "starlight_dual_sat": true,
+                "riverflow": true,
+                "effect_max": true
+            },
+            "default": {
+                "animation": "riverflow",
+                "on": true,
+                "hue": 40,
+                "sat": 255,
+                "val": "max_brightness",
+                "speed": 100
+            },
+            "sleep": false,
+            "max_brightness": 200
+            
+        },
+        "caps_word": {
+            "enable": true,
+            "both_shifts_turns_on": true,
+            "double_tap_shift_turns_on": false,
+            "idle_timeout": 5000,
+            "invert_on_shift": true
+        },
+        "combo": {
+            "term": 40
+        },
+        "mouse_key": {
+            "delay": 1,
+            "interval": 8,
+            "max_speed": 2,
+            "time_to_max": 100,
+            "wheel_delay": 1
+        },
+        "oneshot": {
+            "tap_toggle": 3,
+            "timeout": 10000
+        },
+        "layer_lock": {
+            "timeout": 10000
+        },
+    },
+    "layout": [
+        { "x": 85, "y": 16, "flags": 2 },
+        { "x": 50, "y": 13, "flags": 2 },
+        { "x": 16, "y": 20, "flags": 2 },
+        { "x": 16, "y": 38, "flags": 2 },
+        { "x": 50, "y": 48, "flags": 2 },
+        { "x": 85, "y": 52, "flags": 2 },
+        { "matrix": [3, 5], "x": 95, "y": 63, "flags": 1 },
+        { "matrix": [2, 5], "x": 85, "y": 39, "flags": 4 },
+        { "matrix": [1, 5], "x": 85, "y": 21, "flags": 4 },
+        { "matrix": [0, 5], "x": 85, "y": 4, "flags": 4 },
+        { "matrix": [0, 4], "x": 68, "y": 2, "flags": 4 },
+        { "matrix": [1, 4], "x": 68, "y": 19, "flags": 4 },
+        { "matrix": [2, 4], "x": 68, "y": 37, "flags": 4 },
+        { "matrix": [3, 4], "x": 80, "y": 58, "flags": 1 },
+        { "matrix": [3, 3], "x": 60, "y": 55, "flags": 1 },
+        { "matrix": [2, 3], "x": 50, "y": 35, "flags": 4 },
+        { "matrix": [1, 3], "x": 50, "y": 13, "flags": 4 },
+        { "matrix": [0, 3], "x": 50, "y": 0, "flags": 4 },
+        { "matrix": [0, 2], "x": 33, "y": 3, "flags": 4 },
+        { "matrix": [1, 2], "x": 33, "y": 20, "flags": 4 },
+        { "matrix": [2, 2], "x": 33, "y": 37, "flags": 4 },
+        { "matrix": [2, 1], "x": 16, "y": 42, "flags": 4 },
+        { "matrix": [1, 1], "x": 16, "y": 24, "flags": 4 },
+        { "matrix": [0, 1], "x": 16, "y": 7, "flags": 4 },
+        { "matrix": [0, 0], "x": 0, "y": 7, "flags": 1 },
+        { "matrix": [1, 0], "x": 0, "y": 24, "flags": 1 },
+        { "matrix": [2, 0], "x": 0, "y": 41, "flags": 1 },
+        { "x": 139, "y": 16, "flags": 2 },
+        { "x": 174, "y": 13, "flags": 2 },
+        { "x": 208, "y": 20, "flags": 2 },
+        { "x": 208, "y": 38, "flags": 2 },
+        { "x": 174, "y": 48, "flags": 2 },
+        { "x": 139, "y": 52, "flags": 2 },
+        { "matrix": [7, 5], "x": 129, "y": 63, "flags": 1 },
+        { "matrix": [6, 5], "x": 139, "y": 39, "flags": 4 },
+        { "matrix": [5, 5], "x": 139, "y": 21, "flags": 4 },
+        { "matrix": [4, 5], "x": 139, "y": 4, "flags": 4 },
+        { "matrix": [4, 4], "x": 156, "y": 2, "flags": 4 },
+        { "matrix": [5, 4], "x": 156, "y": 19, "flags": 4 },
+        { "matrix": [6, 4], "x": 156, "y": 37, "flags": 4 },
+        { "matrix": [7, 4], "x": 144, "y": 58, "flags": 1 },
+        { "matrix": [7, 3], "x": 164, "y": 55, "flags": 1 },
+        { "matrix": [6, 3], "x": 174, "y": 35, "flags": 4 },
+        { "matrix": [5, 3], "x": 174, "y": 13, "flags": 4 },
+        { "matrix": [4, 3], "x": 174, "y": 0, "flags": 4 },
+        { "matrix": [4, 2], "x": 191, "y": 3, "flags": 4 },
+        { "matrix": [5, 2], "x": 191, "y": 20, "flags": 4 },
+        { "matrix": [6, 2], "x": 191, "y": 37, "flags": 4 },
+        { "matrix": [6, 1], "x": 208, "y": 42, "flags": 4 },
+        { "matrix": [5, 1], "x": 208, "y": 24, "flags": 4 },
+        { "matrix": [4, 1], "x": 208, "y": 7, "flags": 4 },
+        { "matrix": [4, 0], "x": 225, "y": 7, "flags": 1 },
+        { "matrix": [5, 0], "x": 225, "y": 24, "flags": 1 },
+        { "matrix": [6, 0], "x": 225, "y": 41, "flags": 1 }
+    ],
+    "keycodes": {
+        "LT_ESC": "LT(_SYMB, KC_ESC)",
+       "MT_C_DL": "LCTL_T(KC_DEL)",
+       "MT_A_BS": "LALT_T(KC_BSPC)",
+       "LT_ENTR": "LT(_NUMB, KC_ENTER)",
+       "LT_QUOT": "LT(_FUNC, LT_QUOT)",
+       "LT_SPAC": "LT(_NAVI, KC_SPACE)",
+       "LT_SLSH": "LT(_FUNC, KC_SLSH)",
+       "MO_MENU": "MO(_MENU)",
+       "MT_G_PS": "RGUI_T(KC_PSCR)", 
+       "MEH_F24": "MEH_T(KC_F24)",
+       "OSM_SFT": "OSM(MOD_LSFT)",
+       "OSM_CTL": "OSM(MOD_LCTL)",
+       "OSM_ALT": "OSM(MOD_LALT)",
+       "OSM_GUI": "OSM(MOD_LGUI)",
+       "CS_LEFT": "RCS(KC_LEFT)",
+       "CS_DOWN": "RCS(KC_DOWN)",
+         "CS_UP": "RCS(KC_UP)",
+       "CS_RGHT": "C(KC_RGHT)",
+        "C_LEFT": "C(KC_LEFT)",
+        "S_LEFT": "S(KC_LEFT)",
+        "S_RGHT": "S(KC_RGHT)",
+        "S_DOWN": "S(KC_DOWN)",
+          "S_UP": "S(KC_UP)",
+        "C_RGHT": "C(KC_RGHT)",
+        "S_PGDN": "S(KC_PGDN)",
+        "S_PGUP": "S(KC_PGUP)",
+        "S_HOME": "S(KC_HOME)",
+         "S_END": "S(KC_END)",
+       "PALETTE": "C(S(KC_P))",
+       "COPY_DN": "LSA(KC_DOWN)",
+       "COPY_UP": "LSA(KC_UP)",
+       "MOVE_UP": "LALT(KC_UP)",
+       "MOVE_DN": "LSA(KC_DOWN)",
+       "SELCTAL": "C(S(KC_L))",
+       "MO_LOWR": "MO(_LOWR)",
+       "DEL_WRD": "C(KC_BSPC)",
+       "SFT_TAB": "S(KC_TAB)",
+       "WINLOCK": "LGUI(KC_L)",
+       "CTALDEL": "LCA(KC_DEL)",
+       "CTSFESC": "RCS(KC_ESC)",
+       "SYMBTAB": "LT(_NUMB, KC_TAB)",
+        "SECURE_MACRO": "SECURE_MACRO"
+   },
+   "layers": [
+       [
+            "LT_ESC",    "KC_Q",    "KC_W",    "KC_E",    "KC_R",    "KC_T",/*       */   "KC_Y",    "KC_U",    "KC_I",    "KC_O",    "KC_P", "KC_BSPC",
+           "SYMBTAB",    "KC_A",    "KC_S",    "KC_D",    "KC_F",    "KC_G",/*       */   "KC_H",    "KC_J",    "KC_K",    "KC_L", "KC_SCLN", "LT_QUOT",
+           "SC_LSPO",    "KC_Z",    "KC_X",    "KC_C",    "KC_V",    "KC_B",/*       */   "KC_N",    "KC_M", "KC_COMM",  "KC_DOT", "KC_SLSH", "SC_RSPC",
+           /*                             */"MT_C_DL", "MT_A_BS", "LT_ENTR",/*       */"LT_SPAC", "MT_G_PS", "MEH_F24"
+       ],
+       [
+           "_______",    "KC_B",    "KC_L",    "KC_D",    "KC_C",    "KC_V",/*       */   "KC_J",    "KC_Y",    "KC_O",    "KC_U", "KC_COMM", "_______",
+           "_______",    "KC_N",    "KC_R",    "KC_T",    "KC_S",    "KC_G",/*       */   "KC_P",    "KC_H",    "KC_A",    "KC_E",    "KC_I", "LT_SLSH",
+           "_______",    "KC_X",    "KC_Q",    "KC_M",    "KC_W",    "KC_Z",/*       */   "KC_K",    "KC_F", "LT_QUOT", "KC_SCLN",  "KC_DOT", "_______",
+           /*                             */"_______", "_______", "_______",/*       */"_______", "_______", "_______"
+       ],
+       [
+           "_______", "_______", "_______", "_______", "_______", "_______",/*       */"_______", "_______", "_______", "_______", "_______", "_______",
+           "_______", "_______", "_______", "_______", "_______", "_______",/*       */"_______", "_______", "_______", "_______", "_______", "_______",
+           "_______", "_______", "_______", "_______", "_______", "_______",/*       */"_______", "_______", "_______", "_______", "_______", "_______",
+           /*                             */"_______", "KC_BTN2", "KC_BTN1",/*       */"KC_BTN1", "KC_BTN2", "_______"
+       ],
+       [
+            "KC_GRV", "PALETTE", "COPY_DN", "MOVE_UP", "COPY_UP", "C(KC_D)",/*       */ "KC_GRV",    "KC_7",    "KC_8",    "KC_9", "KC_PMNS", "KC_BSPC",
+           "MO_LOWR", "C(KC_A)", "KC_LEFT", "MOVE_DN", "KC_RGHT", "SELCTAL",/*       */"KC_LBRC",    "KC_4",    "KC_5",    "KC_6", "KC_RBRC", "KC_DEL",
+           "KC_CAPS", "C(KC_Z)", "C(KC_X)", "C(KC_C)", "C(KC_V)", "C(KC_Y)",/*       */ "KC_EQL",    "KC_1",    "KC_2",    "KC_3", "KC_BSLS", "KC_PCMM",
+           /*                             */"KC_PGUP", "KC_PGDN", "_______",/*       */"KC_MINS",    "KC_0",  "KC_DOT"
+       ],
+       [
+            "KC_GRV", "C(KC_Q)", "C(KC_W)", "C(KC_E)", "C(KC_R)", "C(KC_T)",/*       */"KC_TILD", "S(KC_7)", "S(KC_8)", "S(KC_9)", "S(KC_0)", "DEL_WRD",
+           "_______", "C(KC_A)", "C(KC_S)", "C(KC_D)", "C(KC_F)", "C(KC_G)",/*       */"KC_LCBR", "S(KC_4)", "S(KC_5)", "S(KC_6)", "KC_RCBR", "KC_DQUO",
+           "CW_TOGG", "C(KC_Z)", "C(KC_X)", "C(KC_C)", "C(KC_V)", "C(KC_B)",/*       */"KC_PLUS", "S(KC_1)", "S(KC_2)", "S(KC_3)", "KC_QUES", "KC_PIPE",
+           /*                             */"C(KC_C)", "C(KC_V)", "MO_LOWR",/*       */"KC_UNDS", "KC_LABK", "KC_RABK", "_______"
+       ],
+       [
+              "S_UP", "KC_HOME",  "C_LEFT",   "KC_UP",  "C_RGHT",  "KC_END",/*       */"KC_ACL0", "KC_WH_L", "KC_MS_U", "KC_WH_R", "KC_ACL1", "KC_ACL2",
+            "KC_TAB",  "S_LEFT", "KC_LEFT", "KC_DOWN", "KC_RGHT",  "S_RGHT",/*       */"KC_WH_U", "KC_MS_L", "KC_MS_D", "KC_MS_R", "KC_BTN5", "MO(_RAIS)",
+           "SFT_TAB",  "S_HOME", "CS_LEFT",  "S_DOWN", "CS_RGHT",   "S_END",/*       */"KC_WH_D", "KC_BTN1", "KC_BTN3", "KC_BTN2", "KC_BTN4", "_______",
+           /*                             */"C(KC_C)", "C(KC_V)",  "KC_ENT",/*       */"_______", "_______", "_______"
+       ],
+       [
+           "_______",  "KC_NUM",   "KC_F7",   "KC_F8",   "KC_F9",  "KC_F10",/*      */"RGB_RMOD", "RGB_MOD", "KC_VOLU", "RGB_TOG", "CG_TOGG", "_______",
+           "_______", "KC_SCRL",   "KC_F4",   "KC_F5",   "KC_F6",  "KC_F11",/*       */"RGB_SPI", "KC_MPRV", "KC_VOLD", "KC_MNXT", "AG_TOGG", "_______",
+           "OSM_SFT", "KC_PAUS",   "KC_F1",   "KC_F2",   "KC_F3",  "KC_F12",/*       */"RGB_SPD", "KC_MSTP", "KC_MUTE", "KC_MPLY", "AU_TOGG", "_______",
+           /*                           */"OSM_CTL", "OSM_ALT", "MO(_LOWR)",/*       */"_______", "OSM_GUI", "_______"
+       ],
+       [
+           "_______", "_______", "WINLOCK", "CTALDEL", "CTSFESC", "_______",/*       */"_______", "_______","SECURE_MACRO", "_______", "_______", "_______",
+           "_______", "_______", "_______", "_______", "QK_BOOT", "_______",/*       */"_______", "_______", "_______", "_______", "_______", "_______",
+           "_______", "_______", "_______", "_______", "_______", "_______",/*       */"_______", "_______", "_______", "_______", "_______", "_______",
+           /*                            */ "_______", "_______", "_______",/*       */"MO_MENU", "_______", "_______"
+       ],
+       [
+           "_______", "_______", "_______", "_______", "_______", "_______",/*       */"_______", "_______", "_______", "_______", "_______", "_______",
+           "_______", "_______", "_______", "_______", "_______", "_______",/*       */"_______", "_______", "_______", "_______", "_______", "_______",
+           "_______", "_______", "_______", "_______", "_______", "_______",/*       */"_______", "_______", "_______", "_______", "_______", "_______",
+           /*                             */"_______", "_______", "MO_MENU",/*       */"_______", "_______", "_______"
+       ],
+       [
+           "_______", "_______", "_______", "_______", "_______", "_______",/*       */"_______", "_______", "_______", "_______", "_______", "_______",
+           "_______", "_______", "_______", "_______", "_______", "_______",/*       */"_______", "_______", "_______", "_______", "_______", "_______",
+           "_______", "_______", "_______", "_______", "_______", "_______",/*       */"_______", "_______", "_______", "_______", "_______", "_______",
+           /*                           */, "_______", "_______", "_______",/*       */"_______", "_______", "_______"
+       ]
+   ],
+    "macros": [
         [
-            "LTSYESC","KC_Q", "KC_W", "KC_E",     "KC_R",     "KC_T",           "KC_Y",     "KC_U",     "KC_I",     "KC_O",       "KC_P",        "KC_BSPC",
-            "SYMBTAB",           "KC_A",     "KC_S",     "KC_D",     "KC_F",     "KC_G",           "KC_H",     "KC_J",     "KC_K",     "KC_L",       "KC_SCLN",     "LT(_FUNC, KC_QUOTE)",
-            "SC_LSPO",           "KC_Z",     "KC_X",     "KC_C",     "KC_V",     "KC_B",           "KC_N",     "KC_M",     "KC_COMMA", "KC_DOT",     "KC_SLASH",    "SC_RSPC",
-                                                    "LCTL_T(KC_DEL)", "LALT_T(KC_BSPC)", "LT(_NUMB, KC_ENTER)",  "LT(_NAVI, KC_SPACE)", "RGUI_T(KC_PSCR)", "MEH_T(KC_F24)"
-        ],
-        [
-            "_______", "KC_B",     "KC_L",     "KC_D",     "KC_C",     "KC_V",           "KC_J",     "KC_Y",     "KC_O",     "KC_U",       "KC_COMMA", "_______",
-            "_______", "KC_N",     "KC_R",     "KC_T",     "KC_S",     "KC_G",           "KC_P",     "KC_H",     "KC_A",     "KC_E",       "KC_I",     "LT(_FUNC, KC_SLASH)",
-            "_______", "KC_X",     "KC_Q",     "KC_M",     "KC_W",     "KC_Z",           "KC_K",     "KC_F",     "KC_QUOTE", "KC_SCLN",    "KC_DOT",   "_______",
-                                                "_______", "_______", "_______",     "_______", "_______", "_______"
-        ],
-        [
-            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
-            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
-            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
-                                                "_______", "KC_BTN2", "KC_BTN1",    "KC_BTN1", "KC_BTN2", "_______"
-        ],
-        [
-            "KC_GRAVE",      "C(S(KC_P))",  "LSA(KC_DOWN)",  "LALT(KC_UP)",   "LSA(KC_UP)",  "LCTL(KC_D)",      "KC_GRAVE", "KC_7", "KC_8", "KC_9", "KC_KP_MINUS", "KC_BSPC",
-            "MO(_LOWR)",     "LCTL(KC_A)",  "KC_LEFT",       "LALT(KC_DOWN)", "KC_RIGHT",    "C(S(KC_L))",      "KC_LBRC",  "KC_4", "KC_5", "KC_6", "KC_RBRC",     "KC_DELETE",
-            "KC_CAPS",       "LCTL(KC_Z)",  "LCTL(KC_X)",    "LCTL(KC_C)",    "LCTL(KC_V)",  "LCTL(KC_Y)",      "KC_EQUAL", "KC_1", "KC_2", "KC_3", "KC_BSLS",     "KC_KP_COMMA",
-                                                    "KC_PGUP", "KC_PGDN", "_______",     "KC_MINUS", "KC_0", "KC_DOT"
-        ],
-        [
-            "KC_GRAVE",    "LCTL(KC_Q)",  "LCTL(KC_W)",  "LCTL(KC_E)",  "LCTL(KC_R)",  "LCTL(KC_T)",     "LSFT(KC_GRAVE)", "LSFT(KC_7)", "LSFT(KC_8)", "LSFT(KC_9)", "LSFT(KC_0)",    "LCTL(KC_BSPC)",
-            "_______",     "LCTL(KC_A)",  "LCTL(KC_S)",  "LCTL(KC_D)",  "LCTL(KC_F)",  "LCTL(KC_G)",     "LSFT(KC_LBRC)",  "LSFT(KC_4)", "LSFT(KC_5)", "LSFT(KC_6)", "LSFT(KC_RBRC)", "LSFT(KC_QUOTE)",
-            "CW_TOGG",     "LCTL(KC_Z)",  "LCTL(KC_X)",  "LCTL(KC_C)",  "LCTL(KC_V)",  "LCTL(KC_B)",     "LSFT(KC_EQUAL)", "LSFT(KC_1)", "LSFT(KC_2)", "LSFT(KC_3)", "LSFT(KC_BSLS)", "LSFT(KC_SLASH)",
-                                                "LCTL(KC_C)", "LCTL(KC_V)", "MO(_LOWR)",     "LSFT(KC_MINUS)", "LSFT(KC_COMMA)", "LSFT(KC_DOT)"
-        ],
-        [
-            "LSFT(KC_UP)",     "KC_HOME",       "LCTL(KC_LEFT)",   "KC_UP",        "LCTL(KC_RIGHT)", "KC_END",        "KC_ACL0", "KC_WH_L", "KC_MS_U", "KC_WH_R", "KC_ACL0", "KC_ACL0",
-            "KC_TAB",          "LSFT(KC_LEFT)", "KC_LEFT",         "KC_DOWN",      "KC_RIGHT",       "LSFT(KC_RIGHT)", "KC_WH_U", "KC_MS_L", "KC_MS_D", "KC_MS_R", "KC_BTN5", "MO(_RAIS)",
-            "LSFT(KC_TAB)",    "LSFT(KC_HOME)", "RCS(KC_LEFT)",    "LSFT(KC_DOWN)", "RCS(KC_RIGHT)", "LSFT(KC_END)",  "KC_WH_D", "KC_BTN1", "KC_BTN3", "KC_BTN2", "KC_BTN4", "_______",
-                                                    "LCTL(KC_C)", "LCTL(KC_V)", "KC_ENTER",     "_______", "_______", "_______"
-        ],
-        [
-            "_______",    "KC_NUM",    "KC_F7",   "KC_F8",   "KC_F9",    "KC_F10",        "RGB_RMOD", "RGB_MOD", "KC_VOLU", "RGB_TOG", "CG_TOGG", "_______",
-            "_______",    "KC_SCRL",   "KC_F4",   "KC_F5",   "KC_F6",    "KC_F11",        "RGB_SPI",  "KC_MPRV", "KC_VOLD", "KC_MNXT", "AG_TOGG", "_______",
-            "OSM(MOD_LSFT)", "KC_PAUSE", "KC_F1", "KC_F2", "KC_F3", "KC_F12",          "RGB_SPD",  "KC_MSTP", "KC_MUTE", "KC_MPLY", "AU_TOGG", "_______",
-                                            "OSM(MOD_LCTL)", "OSM(MOD_LALT)", "_______",     "MO(_LOWR)", "OSM(MOD_LGUI)", "_______"
-        ],
-        [
-            "_______",         "_______",         "LGUI(KC_L)",    "LCA(KC_DEL)",   "RCS(KC_RIGHT)", "_______",        "_______", "_______", "SECURE", "_______", "_______", "_______",
-            "_______",         "_______",         "_______",       "_______",       "QK_BOOT",       "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
-            "_______",         "_______",         "_______",       "_______",       "_______",       "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
-                                                    "_______", "_______", "_______",     "MO(_MENU)", "_______", "_______"
-        ],
-        [
-            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
-            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "QK_BOOT", "_______", "_______", "_______", "_______",
-            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
-                                                    "_______", "_______", "MO(_MENU)",     "_______", "_______", "_______"
-        ],
-        [
-            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
-            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
-            "_______", "_______", "_______", "_______", "_______", "_______",        "_______", "_______", "_______", "_______", "_______", "_______",
-                                                    "_______", "_______", "_______",     "_______", "_______", "_______"
+           "{{SECURE_MACRO}}"
         ]
     ],
-    "features": {
-        "audio": true,
-        "bootmagic": true,
-        "encoder": false,
-        "extrakey": true,
-        "mousekey": true,
-        "nkro": true,
-        "oled": true,
-        "rgb_matrix": true,
-        "layer_lock": true,
-        "command": false,
-        "pointing_device": true,
-        "key_override": true,
-        "combo": true
-    },
-    "tapping": {
-        "permissive_hold": true,
-        "term": 250,
-        "toggle": 3
-    },
-    "split": {
-        "transport": {
-            "sync": {
-                "activity": false,
-                "detected_os": false,
-                "haptic": false,
-                "layer_state": true,
-                "indicators": true,
-                "matrix_state": false,
-                "modifiers": true,
-                "oled": true,
-                "st7565": false,
-                "wpm": false
-            }
-        }
-    },
-    "rgb_matrix": {
-        "animations": {
-            "none": true,
-            "solid_color": true,
-            "alphas_mods": true,
-            "gradient_up_down": true,
-            "gradient_left_right": true,
-            "breathing": true,
-            "band_val": true,
-            "band_pinwheel_val": true,
-            "band_spiral_val": true,
-            "cycle_all": true,
-            "cycle_left_right": true,
-            "cycle_up_down": true,
-            "cycle_out_in": true,
-            "cycle_out_in_dual": true,
-            "rainbow_moving_chevron": true,
-            "cycle_pinwheel": true,
-            "cycle_spiral": true,
-            "dual_beacon": true,
-            "rainbow_beacon": true,
-            "rainbow_pinwheels": true,
-            "flower_blooming": true,
-            "raindrops": true,
-            "jellybean_raindrops": true,
-            "pixel_fractal": true,
-            "pixel_flow": true,
-            "pixel_rain": true,
-            "typing_heatmap": true,
-            "digital_rain": true,
-            "solid_reactive_simple": true,
-            "solid_reactive": true,
-            "solid_reactive_wide": true,
-            "solid_reactive_multiwide": true,
-            "solid_reactive_cross": true,
-            "solid_reactive_multicross": true,
-            "solid_reactive_nexus": true,
-            "solid_reactive_multinexus": true,
-            "splash": true,
-            "multisplash": true,
-            "solid_splash": true,
-            "solid_multisplash": true,
-            "starlight": true,
-            "starlight_dual_hue": true,
-            "starlight_dual_sat": true,
-            "riverflow": true,
-            "effect_max": true
-        },
-        "default": {
-            "animation": "riverflow",
-            "on": true,
-            "hue": 40,
-            "saturation": 255,
-            "speed": 100
-        },
-        "layout": [
-            {"x": 85, "y": 16, "flags": 2},
-            {"x": 50, "y": 13, "flags": 2},
-            {"x": 16, "y": 20, "flags": 2},
-            {"x": 16, "y": 38, "flags": 2},
-            {"x": 50, "y": 48, "flags": 2},
-            {"x": 85, "y": 52, "flags": 2},
-            {"matrix": [3, 5], "x": 95, "y": 63, "flags": 1},
-            {"matrix": [2, 5], "x": 85, "y": 39, "flags": 4},
-            {"matrix": [1, 5], "x": 85, "y": 21, "flags": 4},
-            {"matrix": [0, 5], "x": 85, "y": 4, "flags": 4},
-            {"matrix": [0, 4], "x": 68, "y": 2, "flags": 4},
-            {"matrix": [1, 4], "x": 68, "y": 19, "flags": 4},
-            {"matrix": [2, 4], "x": 68, "y": 37, "flags": 4},
-            {"matrix": [3, 4], "x": 80, "y": 58, "flags": 1},
-            {"matrix": [3, 3], "x": 60, "y": 55, "flags": 1},
-            {"matrix": [2, 3], "x": 50, "y": 35, "flags": 4},
-            {"matrix": [1, 3], "x": 50, "y": 13, "flags": 4},
-            {"matrix": [0, 3], "x": 50, "y": 0, "flags": 4},
-            {"matrix": [0, 2], "x": 33, "y": 3, "flags": 4},
-            {"matrix": [1, 2], "x": 33, "y": 20, "flags": 4},
-            {"matrix": [2, 2], "x": 33, "y": 37, "flags": 4},
-            {"matrix": [2, 1], "x": 16, "y": 42, "flags": 4},
-            {"matrix": [1, 1], "x": 16, "y": 24, "flags": 4},
-            {"matrix": [0, 1], "x": 16, "y": 7, "flags": 4},
-            {"matrix": [0, 0], "x": 0, "y": 7, "flags": 1},
-            {"matrix": [1, 0], "x": 0, "y": 24, "flags": 1},
-            {"matrix": [2, 0], "x": 0, "y": 41, "flags": 1},
-            {"x": 139, "y": 16, "flags": 2},
-            {"x": 174, "y": 13, "flags": 2},
-            {"x": 208, "y": 20, "flags": 2},
-            {"x": 208, "y": 38, "flags": 2},
-            {"x": 174, "y": 48, "flags": 2},
-            {"x": 139, "y": 52, "flags": 2},
-            {"matrix": [7, 5], "x": 129, "y": 63, "flags": 1},
-            {"matrix": [6, 5], "x": 139, "y": 39, "flags": 4},
-            {"matrix": [5, 5], "x": 139, "y": 21, "flags": 4},
-            {"matrix": [4, 5], "x": 139, "y": 4, "flags": 4},
-            {"matrix": [4, 4], "x": 156, "y": 2, "flags": 4},
-            {"matrix": [5, 4], "x": 156, "y": 19, "flags": 4},
-            {"matrix": [6, 4], "x": 156, "y": 37, "flags": 4},
-            {"matrix": [7, 4], "x": 144, "y": 58, "flags": 1},
-            {"matrix": [7, 3], "x": 164, "y": 55, "flags": 1},
-            {"matrix": [6, 3], "x": 174, "y": 35, "flags": 4},
-            {"matrix": [5, 3], "x": 174, "y": 13, "flags": 4},
-            {"matrix": [4, 3], "x": 174, "y": 0, "flags": 4},
-            {"matrix": [4, 2], "x": 191, "y": 3, "flags": 4},
-            {"matrix": [5, 2], "x": 191, "y": 20, "flags": 4},
-            {"matrix": [6, 2], "x": 191, "y": 37, "flags": 4},
-            {"matrix": [6, 1], "x": 208, "y": 42, "flags": 4},
-            {"matrix": [5, 1], "x": 208, "y": 24, "flags": 4},
-            {"matrix": [4, 1], "x": 208, "y": 7, "flags": 4},
-            {"matrix": [4, 0], "x": 225, "y": 7, "flags": 1},
-            {"matrix": [5, 0], "x": 225, "y": 24, "flags": 1},
-            {"matrix": [6, 0], "x": 225, "y": 41, "flags": 1}
-        ],
-        "sleep": false
-    },
-    "caps_word": {
-        "enable": true,
-        "both_shifts_turns_on": true,
-        "double_tap_shift_turns_on": false,
-        "idle_timeout": 5000,
-        "invert_on_shift": true
-    },
-    "combo": {
-        "enable": true,
-        "term": 40
-    },
-    "audio": {
-        "pin": "GP28",
-        "driver": "pwm_hardware"
-    },
-    "mouse_key": {
-        "delay": 1,
-        "interval": 8,
-        "max_speed": 2,
-        "time_to_max": 100,
-        "wheel_delay": 1
-    },
-
 }
