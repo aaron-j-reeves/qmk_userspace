@@ -14,8 +14,7 @@ jobs:
       qmk_ref: master
       userspace_repo: ${{ github.repository }}
       userspace_branch: ${{ github.ref }}
-      qmk_make_args: ${{ 'SECURE_MACRO_VALUE="' + secrets.SECURE + '"' }}
-      # qmk_make_args: ${{ format('SECURE_MACRO_VALUE="{0}"', secrets.SECURE) }}
+      qmk_make_args: ${{ format('SECURE_MACRO_VALUE="{0}"', secrets.SECURE) }}
 
   publish:
     name: 'QMK Userspace Publish'
