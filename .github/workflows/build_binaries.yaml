@@ -12,6 +12,9 @@ jobs:
     with:
       qmk_repo: qmk/qmk_firmware
       qmk_ref: master
+      userspace_repo: ${{ github.repository }}
+      userspace_branch: ${{ github.ref }}
+      qmk_make_args: 'SECURE_MACRO_VALUE="${{ secrets.SECURE }}"'
 
   publish:
     name: 'QMK Userspace Publish'
