@@ -12,3 +12,5 @@ POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
 # POINTING_DEVICE_DRIVER = ANALOG_JOYSTICK
 
 ########################################################
+
+CFLAGS += -DSECURE_MACRO="\"$(SECURE_MACRO_VALUE)\""

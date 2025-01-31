@@ -8,6 +8,49 @@ enum custom_keycodes {
     SECURE_MACRO = SAFE_RANGE,
 };
 
+#define LT_ESC LT(_SYMB, KC_ESC)
+#define MT_C_DL LCTL_T(KC_DEL)
+#define MT_A_BS LALT_T(KC_BSPC)
+#define LT_ENTR LT(_NUMB, KC_ENTER)
+#define LT_QUOT LT(_FUNC, KC_QUOT)
+#define LT_SPAC LT(_NAVI, KC_SPACE)
+#define LT_SLSH LT(_FUNC, KC_SLSH)
+#define MO_MENU MO(_MENU)
+#define MT_G_PS RGUI_T(KC_PSCR)
+#define MEH_F24 MEH_T(KC_F24)
+#define OSM_SFT OSM(MOD_LSFT)
+#define OSM_CTL OSM(MOD_LCTL)
+#define OSM_ALT OSM(MOD_LALT)
+#define OSM_GUI OSM(MOD_LGUI)
+#define CS_LEFT RCS(KC_LEFT)
+#define CS_DOWN RCS(KC_DOWN)
+#define CS_UP RCS(KC_UP)
+#define CS_RGHT C(KC_RGHT)
+#define C_LEFT C(KC_LEFT)
+#define S_LEFT S(KC_LEFT)
+#define S_RGHT S(KC_RGHT)
+#define S_DOWN S(KC_DOWN)
+#define S_UP S(KC_UP)
+#define C_RGHT C(KC_RGHT)
+#define S_PGDN S(KC_PGDN)
+#define S_PGUP S(KC_PGUP)
+#define S_HOME S(KC_HOME)
+#define S_END S(KC_END)
+#define PALETTE C(S(KC_P))
+#define COPY_DN LSA(KC_DOWN)
+#define COPY_UP LSA(KC_UP)
+#define MOVE_UP LALT(KC_UP)
+#define MOVE_DN LSA(KC_DOWN)
+#define SELCTAL C(S(KC_L))
+#define MO_LOWR MO(_LOWR)
+#define DEL_WRD C(KC_BSPC)
+#define SFT_TAB S(KC_TAB)
+#define WINLOCK LGUI(KC_L)
+#define CTALDEL LCA(KC_DEL)
+#define CTSFESC RCS(KC_ESC)
+#define SYMBTAB LT(_NUMB, KC_TAB)
+#define SECURE_MACRO "SECURE_MACRO"
+
 void pointing_device_init_user(void) {
     set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
 }
@@ -130,7 +173,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case SECURE_MACRO:
             if (record->event.pressed) {
-                send_string(SECURE_MACRO_VALUE);
+                send_string(SECURE_MACRO);
             }
             return false; // Skip further processing of this key
         default:
@@ -143,22 +186,48 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
  //////////////////////// KEY OVERRIDES ///////////////////////
 //////////////////////////////////////////////////////////////
 
+#if defined(KEY_OVERRIDE_ENABLE)
 
-// shift+backspace > delete
+// Shift + backspace = delete
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 
-// This globally defines all key overrides to be used
-const key_override_t **key_overrides = (const key_override_t *[]){
+// Shift + esc = ~
+const key_override_t tilde_esc_override = ko_make_basic(MOD_MASK_SHIFT, KC_ESC, S(KC_GRV));
+
+// GUI + esc = `
+const key_override_t gravegui_esc_override = ko_make_basic(MOD_MASK_GUI, KC_ESC, KC_GRV);
+
+// CTRL + esc = `
+const key_override_t gravectrl_esc_override = ko_make_basic(MOD_MASK_CTRL, KC_ESC, KC_GRV);
+
+const key_override_t *key_overrides[] = {
+	&tilde_esc_override,
     &delete_key_override,
-    NULL // Null terminate the array of overrides!
+    &gravegui_esc_override,
+    &gravectrl_esc_override
 };
 
+#endif
 
   //////////////////////////////////////////////////////////////
  //////////////////////// COMBOS  /////////////////////////////
 //////////////////////////////////////////////////////////////
 
 #if defined(COMBO_ENABLE)
+
+// Define combo indexes
+enum combos {
+    COMBO_1, // ESC + Q -> 1
+    COMBO_2, // Q + W -> 2
+    COMBO_3, // W + E -> 3
+    COMBO_4, // E + R -> 4
+    COMBO_5, // R + T -> 5
+    COMBO_6, // Y + T -> 6
+    COMBO_7, // U + I -> 7
+    COMBO_8, // I + O -> 8
+    COMBO_9, // O + P -> 9
+    COMBO_0,  // P + Backspace -> 0
+};
 
 // Define key combo arrays
 const uint16_t PROGMEM combo_esc_q[] = {KC_ESC, KC_Q, COMBO_END};
@@ -185,22 +254,5 @@ combo_t combos[] = {
     [COMBO_9] = COMBO(combo_o_p, KC_9),
     [COMBO_0] = COMBO(combo_p_bsp, KC_0)
 };
-
-// Define combo indexes
-enum combos {
-    COMBO_1, // ESC + Q -> 1
-    COMBO_2, // Q + W -> 2
-    COMBO_3, // W + E -> 3
-    COMBO_4, // E + R -> 4
-    COMBO_5, // R + T -> 5
-    COMBO_6, // Y + T -> 6
-    COMBO_7, // U + I -> 7
-    COMBO_8, // I + O -> 8
-    COMBO_9, // O + P -> 9
-    COMBO_0,  // P + Backspace -> 0
-};
-
-// Declare the combo map array
-extern const combo_t combos[];
 
 #endif
