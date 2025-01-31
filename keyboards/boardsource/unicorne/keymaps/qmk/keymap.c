@@ -2,16 +2,11 @@
 #include QMK_KEYBOARD_H
 #include "song_list.h"
 #include "layers.h"
-#include "combos.h"
 
 // Enum for custom keycodes
 enum custom_keycodes {
     SECURE_MACRO = SAFE_RANGE,
 };
-// Use the SECURE_MACRO_VALUE compilation flag or a default value
-#ifndef SECURE_MACRO_VALUE
-#define SECURE_MACRO_VALUE "Default Value"
-#endif
 
 void pointing_device_init_user(void) {
     set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
@@ -144,10 +139,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 
-
   //////////////////////////////////////////////////////////////
  //////////////////////// KEY OVERRIDES ///////////////////////
 //////////////////////////////////////////////////////////////
+
 
 // shift+backspace > delete
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
@@ -157,3 +152,55 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &delete_key_override,
     NULL // Null terminate the array of overrides!
 };
+
+
+  //////////////////////////////////////////////////////////////
+ //////////////////////// COMBOS  /////////////////////////////
+//////////////////////////////////////////////////////////////
+
+#if defined(COMBO_ENABLE)
+
+// Define key combo arrays
+const uint16_t PROGMEM combo_esc_q[] = {KC_ESC, KC_Q, COMBO_END};
+const uint16_t PROGMEM combo_q_w[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM combo_w_e[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM combo_e_r[] = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM combo_r_t[] = {KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM combo_y_t[] = {KC_Y, KC_T, COMBO_END};
+const uint16_t PROGMEM combo_u_i[] = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM combo_i_o[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM combo_o_p[] = {KC_O, KC_P, COMBO_END};
+const uint16_t PROGMEM combo_p_bsp[] = {KC_P, KC_BSPC, COMBO_END};
+
+// Map combos to their resulting keycodes
+combo_t combos[] = {
+    [COMBO_1] = COMBO(combo_esc_q, KC_1),
+    [COMBO_2] = COMBO(combo_q_w, KC_2),
+    [COMBO_3] = COMBO(combo_w_e, KC_3),
+    [COMBO_4] = COMBO(combo_e_r, KC_4),
+    [COMBO_5] = COMBO(combo_r_t, KC_5),
+    [COMBO_6] = COMBO(combo_y_t, KC_6),
+    [COMBO_7] = COMBO(combo_u_i, KC_7),
+    [COMBO_8] = COMBO(combo_i_o, KC_8),
+    [COMBO_9] = COMBO(combo_o_p, KC_9),
+    [COMBO_0] = COMBO(combo_p_bsp, KC_0)
+};
+
+// Define combo indexes
+enum combos {
+    COMBO_1, // ESC + Q -> 1
+    COMBO_2, // Q + W -> 2
+    COMBO_3, // W + E -> 3
+    COMBO_4, // E + R -> 4
+    COMBO_5, // R + T -> 5
+    COMBO_6, // Y + T -> 6
+    COMBO_7, // U + I -> 7
+    COMBO_8, // I + O -> 8
+    COMBO_9, // O + P -> 9
+    COMBO_0,  // P + Backspace -> 0
+};
+
+// Declare the combo map array
+extern const combo_t combos[];
+
+#endif

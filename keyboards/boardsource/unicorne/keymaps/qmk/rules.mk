@@ -1,7 +1,6 @@
 # rules.mk
 SRC += oled.c
 SRC += layers.c
-SRC += combos.c
 
 ########################################################
 #  enable one or the other, NOT BOTH
@@ -13,6 +12,3 @@ POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
 # POINTING_DEVICE_DRIVER = ANALOG_JOYSTICK
 
 ########################################################
-
-# This takes the SECURE environment variable (provided by GitHub Actions) and passes it to the compiler so it can be used as a #define during compilation.
-#CFLAGS += -DSECURE_MACRO="\"$(SECURE)\""
