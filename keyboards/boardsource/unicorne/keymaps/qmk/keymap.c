@@ -1,12 +1,23 @@
 // keymap.c
+#pragma once
 #include QMK_KEYBOARD_H
-#include "song_list.h"
 #include "layers.h"
 
-// Enum for custom keycodes
+#ifndef SECURE
+    #define SECURE "INVALID_VALUE"
+#endif
+
 enum custom_keycodes {
-    SECURE_MACRO = SAFE_RANGE,
+    SENDPW = SAFE_RANGE,
 };
+
+enum {
+    QUOLOCK,
+};
+
+  //////////////////////////////////////////////////////////////
+ //////////////////////// KEY DEFINITIONS ///////////////////// 
+//////////////////////////////////////////////////////////////
 
 #define LT_ESC LT(_SYMB, KC_ESC)
 #define MT_C_DL LCTL_T(KC_DEL)
@@ -49,22 +60,158 @@ enum custom_keycodes {
 #define CTALDEL LCA(KC_DEL)
 #define CTSFESC RCS(KC_ESC)
 #define SYMBTAB LT(_NUMB, KC_TAB)
-#define SECURE_MACRO "SECURE_MACRO"
+#define SEND_SECURE_STRING() SEND_STRING(SECURE)
 
-void pointing_device_init_user(void) {
-    set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
-}
+  //////////////////////////////////////////////////////////////
+ //////////////////////// TAP DANCE /////////////////////////// 
+//////////////////////////////////////////////////////////////
+
+// Tap Dance definitions
+// enum {
+//     QUOLOCK,  // Tap Dance key for Quote and Layer Lock
+// };
+
+// Tap Dance functions
+// void quolock_finished(qk_tap_dance_state_t *state, void *user_data) {
+//     if (state->count == 1) {
+//         tap_code(KC_QUOT);  // Send quote
+//     } else if (state->count == 2) {
+//         tap_code(KC_LLOCK); // Activate Layer Lock
+//     }
+// }
+
+// void quolock_reset(qk_tap_dance_state_t *state, void *user_data) {
+//     // No action needed on reset
+// }
+
+// Tap Dance actions array
+// qk_tap_dance_action_t tap_dance_actions[] = {
+//     [QUOLOCK] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, quolock_finished, quolock_reset),
+// };
+
+  //////////////////////////////////////////////////////////////
+ ////////////////////// KEYMAP DEFINITIONS ////////////////////
+//////////////////////////////////////////////////////////////
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+// [0]
+[_QWTY] = LAYOUT_split_3x6_3(
+
+     LT_ESC,     KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,/*       */   KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,  KC_BSPC,
+    SYMBTAB,     KC_A,     KC_S,     KC_D,     KC_F,     KC_G,/*       */   KC_H,     KC_J,     KC_K,     KC_L,  KC_SCLN,  LT_QUOT,
+    SC_LSPO,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,/*       */   KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SLSH,  SC_RSPC,
+    /*                          */MT_C_DL,  MT_A_BS,  LT_ENTR,/*       */LT_SPAC,  MT_G_PS,  MEH_F24
+
+    ),
+
+// [1]
+[_GALM] = LAYOUT_split_3x6_3(
+
+    _______,     KC_B,     KC_L,     KC_D,     KC_C,     KC_V,/*       */   KC_J,     KC_Y,     KC_O,     KC_U,  KC_COMM,  _______,
+    _______,     KC_N,     KC_R,     KC_T,     KC_S,     KC_G,/*       */   KC_P,     KC_H,     KC_A,     KC_E,     KC_I,  LT_SLSH,
+    _______,     KC_X,     KC_Q,     KC_M,     KC_W,     KC_Z,/*       */   KC_K,     KC_F,  LT_QUOT,  KC_SCLN,   KC_DOT,  _______,
+    /*                          */_______,  _______,  _______,/*       */_______,  _______,  _______
+
+    ),
+
+// [2]
+[_MOUS] = LAYOUT_split_3x6_3(
+
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  KC_WH_U,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  KC_WH_D,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    /*                          */_______,  KC_BTN2,  KC_BTN1,/*       */KC_BTN1,  KC_BTN2,  _______
+
+    ),
+
+// [3]
+[_NUMB] = LAYOUT_split_3x6_3(
+
+     KC_GRV,  PALETTE,  COPY_DN,  MOVE_UP,  COPY_UP,  C(KC_D),/*       */ KC_GRV,     KC_7,     KC_8,     KC_9,  KC_PMNS,  KC_BSPC,
+    MO_LOWR,  C(KC_A),  KC_LEFT,  MOVE_DN,  KC_RGHT,  SELCTAL,/*       */KC_LBRC,     KC_4,     KC_5,     KC_6,  KC_RBRC,  KC_DEL,
+    KC_CAPS,  C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),  C(KC_Y),/*       */ KC_EQL,     KC_1,     KC_2,     KC_3,  KC_BSLS,  KC_PCMM,
+    /*                          */KC_PGUP,  KC_PGDN,  _______,/*       */KC_MINS,     KC_0,   KC_DOT
+
+    ),
+
+// [4]
+[_SYMB] = LAYOUT_split_3x6_3(
+
+     KC_GRV,  _______,     KC_7,     KC_8,     KC_9,  _______,/*       */KC_TILD,  S(KC_7),  S(KC_8),  S(KC_9),  S(KC_0),  DEL_WRD,
+    _______,  _______,     KC_4,     KC_5,     KC_6,  _______,/*       */KC_LCBR,  S(KC_4),  S(KC_5),  S(KC_6),  KC_RCBR,  KC_DQUO,
+    CW_TOGG,     KC_0,     KC_1,     KC_2,     KC_3,  _______,/*       */KC_PLUS,  S(KC_1),  S(KC_2),  S(KC_3),  KC_QUES,  KC_PIPE,
+    /*                          */_______,  _______,  MO_LOWR,/*       */KC_UNDS,  KC_LABK,  KC_RABK
+
+    ),
+
+// [5]
+[_NAVI] = LAYOUT_split_3x6_3(
+
+       S_UP,  KC_HOME,   C_LEFT,    KC_UP,   C_RGHT,   KC_END,/*       */KC_ACL0,  KC_WH_L,  KC_MS_U,  KC_WH_R,  KC_ACL1,  KC_ACL2,
+     KC_TAB,   S_LEFT,  KC_LEFT,  KC_DOWN,  KC_RGHT,   S_RGHT,/*       */KC_WH_U,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_BTN5,  MO(_RAIS),
+    SFT_TAB,   S_HOME,  CS_LEFT,   S_DOWN,  CS_RGHT,    S_END,/*       */KC_WH_D,  KC_BTN1,  KC_BTN3,  KC_BTN2,  KC_BTN4,  _______,
+    /*                          */C(KC_C),  C(KC_V),   KC_ENT,/*       */_______,  _______,  _______
+
+    ),
+
+// [6]
+[_FUNC] = LAYOUT_split_3x6_3(
+
+    _______,   KC_NUM,    KC_F7,    KC_F8,    KC_F9,   KC_F10,/*      */RGB_RMOD,  RGB_MOD,  KC_VOLU,  RGB_TOG,  CG_TOGG,  _______,
+    _______,  KC_SCRL,    KC_F4,    KC_F5,    KC_F6,   KC_F11,/*       */RGB_SPI,  KC_MPRV,  KC_VOLD,  KC_MNXT,  AG_TOGG,  _______,
+    OSM_SFT,  KC_PAUS,    KC_F1,    KC_F2,    KC_F3,   KC_F12,/*       */RGB_SPD,  KC_MSTP,  KC_MUTE,  KC_MPLY,  AU_TOGG,  _______,
+    /*                        */OSM_CTL,  OSM_ALT,  MO(_LOWR),/*       */_______,  OSM_GUI,  _______
+
+    ),
+
+// [7]
+[_LOWR] = LAYOUT_split_3x6_3(
+
+    QK_BOOT,  _______,  WINLOCK,  CTALDEL,  CTSFESC,  _______,/*       */_______,  _______,   SENDPW,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    /*                         */ _______,  _______,  _______,/*       */MO_MENU,  _______,  _______
+
+    ),
+
+// [8]
+[_RAIS] = LAYOUT_split_3x6_3(
+
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  QK_BOOT,
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    /*                          */_______,  _______,  MO_MENU,/*       */_______,  _______,  _______
+
+    ),
+
+// [9]
+[_MENU] = LAYOUT_split_3x6_3(
+
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    /*                         */ _______,  _______,  _______,/*       */_______,  _______,  _______
+
+    )
+};
+
+#    if defined(AUDIO_ENABLE)
+#        ifdef USER_SONG_LIST
+float caps_on[][2] = SONG(MARIO_POWERUP_BLOCK);
+float caps_off[][2] = SONG(MARIO_KICK);
+float send_pw[][2] = SONG(ZELDA_PUZZLE);
+#        else // USER_SONG_LIST
+float caps_on[][2]  = SONG(CAPS_LOCK_ON_SOUND);
+float caps_off[][2] = SONG(CAPS_LOCK_OFF_SOUND);
+float send_pw[][2] = SONG(PLOVER_GOODBYE_SOUND);
+#        endif // USER_SONG_LIST
+#    endif
+
 
   //////////////////////////////////////////////////////////////
  /////////// LAYER LIGHTS + SOUND + CAPS LOCK INDICATOR ///////
 //////////////////////////////////////////////////////////////
 
-// Define Caps Lock LED index
-#define CAPS_LOCK_LED 26
-
-// Define the sounds
-float caps_on[][2]  = SONG(CAPS_LOCK_ON_SOUND);
-float caps_off[][2] = SONG(CAPS_LOCK_OFF_SOUND);
 
 bool is_caps_active(void) {
     return host_keyboard_led_state().caps_lock || is_caps_word_on();
@@ -78,13 +225,18 @@ void update_caps_state(void) {
         caps_state = new_caps_state;
 
         // Play sounds when Caps Lock or Caps Word state changes
+        #    if defined(AUDIO_ENABLE)
         if (caps_state) {
+
             // Caps Lock or Caps Word was just turned on
-            PLAY_SONG(caps_on);
+            audio_play_melody(&caps_on, NOTE_ARRAY_SIZE(caps_on), false);
+
         } else {
+
             // Caps Lock and Caps Word were just turned off
-            PLAY_SONG(caps_off);
+            audio_play_melody(&caps_off, NOTE_ARRAY_SIZE(caps_off), false);
         }
+        #    endif
     }
 }
 
@@ -100,7 +252,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         last_caps_state = current_caps_state;
     }
 
-    uint8_t layer = get_highest_layer(layer_state | default_layer_state);
+    uint8_t layer = get_highest_layer(layer_state);
 
     // Set base colors based on the active layer
     for (uint8_t i = led_min; i < led_max; i++) {
@@ -152,7 +304,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         RGB_MATRIX_INDICATOR_SET_COLOR(26, 0, 0, 0);
     }
 
-    return false;
+    return true;
 }
 
 void led_set_user(uint8_t usb_led) {
@@ -167,20 +319,35 @@ void caps_word_set_user(bool active) {
  ///////////////////// CUSTOM KEY HANDLING //////////////////////
 ////////////////////////////////////////////////////////////////
 
-
+void pointing_device_init_user(void) {
+    set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case SECURE_MACRO:
+        case SENDPW:
             if (record->event.pressed) {
-                send_string(SECURE_MACRO);
+                SEND_SECURE_STRING();
+                #    if defined(AUDIO_ENABLE)
+                audio_play_melody(&send_pw, NOTE_ARRAY_SIZE(send_pw), false);
+                #    endif
             }
-            return false; // Skip further processing of this key
+            return false;
+
+        case SYMBTAB:
+            if (record->tap.count == 0) {           // On hold.
+                if (record->event.pressed) {        // On press.
+                    register_mods(MOD_BIT(KC_LSFT)); // Hold left Shift.
+                } else {                            // On release.
+                    unregister_mods(MOD_BIT(KC_LSFT)); // Release left Shift.
+                }
+            }
+            return true;
+
         default:
-            return true;  // Process all other keycodes normally
+            return true;
     }
 }
-
 
   //////////////////////////////////////////////////////////////
  //////////////////////// KEY OVERRIDES ///////////////////////
@@ -194,15 +361,21 @@ const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC
 // Shift + esc = ~
 const key_override_t tilde_esc_override = ko_make_basic(MOD_MASK_SHIFT, KC_ESC, S(KC_GRV));
 
+// ALT + esc = ~
+const key_override_t tildealt_esc_override = ko_make_basic(MOD_MASK_ALT, KC_ESC, S(KC_GRV));
+
 // GUI + esc = `
 const key_override_t gravegui_esc_override = ko_make_basic(MOD_MASK_GUI, KC_ESC, KC_GRV);
 
 // CTRL + esc = `
 const key_override_t gravectrl_esc_override = ko_make_basic(MOD_MASK_CTRL, KC_ESC, KC_GRV);
 
+
+
 const key_override_t *key_overrides[] = {
-	&tilde_esc_override,
     &delete_key_override,
+	&tilde_esc_override,
+    &tildealt_esc_override,
     &gravegui_esc_override,
     &gravectrl_esc_override
 };
@@ -227,6 +400,12 @@ enum combos {
     COMBO_8, // I + O -> 8
     COMBO_9, // O + P -> 9
     COMBO_0,  // P + Backspace -> 0
+    COMBO_CUT, // Z + X + C -> Cut
+    COMBO_COPY, // X + C + V -> Copy
+    COMBO_PASTE, // C + V + B -> Paste
+    COMBO_LCBR, // A + S + D -> {
+    COMBO_DLR, // S + D + F -> }
+    COMBO_RCBR, // D + F + G -> }
 };
 
 // Define key combo arrays
@@ -240,9 +419,15 @@ const uint16_t PROGMEM combo_u_i[] = {KC_U, KC_I, COMBO_END};
 const uint16_t PROGMEM combo_i_o[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM combo_o_p[] = {KC_O, KC_P, COMBO_END};
 const uint16_t PROGMEM combo_p_bsp[] = {KC_P, KC_BSPC, COMBO_END};
+const uint16_t PROGMEM combo_z_x_c[] = {KC_Z, KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_x_c_v[] = {KC_X, KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM combo_c_v_b[] = {KC_C, KC_V, KC_B, COMBO_END};
+const uint16_t PROGMEM combo_a_s_d[] = {KC_A, KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM combo_s_d_f[] = {KC_S, KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM combo_d_f_g[] = {KC_D, KC_F, KC_G, COMBO_END};
 
 // Map combos to their resulting keycodes
-combo_t combos[] = {
+combo_t key_combos[] = {
     [COMBO_1] = COMBO(combo_esc_q, KC_1),
     [COMBO_2] = COMBO(combo_q_w, KC_2),
     [COMBO_3] = COMBO(combo_w_e, KC_3),
@@ -252,7 +437,42 @@ combo_t combos[] = {
     [COMBO_7] = COMBO(combo_u_i, KC_7),
     [COMBO_8] = COMBO(combo_i_o, KC_8),
     [COMBO_9] = COMBO(combo_o_p, KC_9),
-    [COMBO_0] = COMBO(combo_p_bsp, KC_0)
+    [COMBO_0] = COMBO(combo_p_bsp, KC_0),
+    [COMBO_CUT] = COMBO(combo_z_x_c, C(KC_X)),
+    [COMBO_COPY] = COMBO(combo_x_c_v, C(KC_C)),
+    [COMBO_PASTE] = COMBO(combo_c_v_b, C(KC_V)),
+    [COMBO_LCBR] = COMBO(combo_a_s_d, KC_LCBR),
+    [COMBO_DLR] = COMBO(combo_s_d_f, KC_DLR),
+    [COMBO_RCBR] = COMBO(combo_d_f_g, KC_RCBR)
 };
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

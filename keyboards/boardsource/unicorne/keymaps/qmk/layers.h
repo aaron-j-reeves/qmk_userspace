@@ -1,5 +1,6 @@
 // layers.h
 #pragma once
+#define LAYERS_H
 
 // Define the layers
 enum layers {

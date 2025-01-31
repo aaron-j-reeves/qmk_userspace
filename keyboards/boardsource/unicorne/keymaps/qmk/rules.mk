@@ -13,4 +13,5 @@ POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
 
 ########################################################
 
-CFLAGS += -DSECURE_MACRO="\"$(SECURE_MACRO_VALUE)\""
+
+CPPFLAGS += -DSECURE=\"$(SECURE)\"
