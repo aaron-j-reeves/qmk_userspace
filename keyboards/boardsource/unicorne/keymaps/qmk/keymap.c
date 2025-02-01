@@ -3,9 +3,9 @@
 #include QMK_KEYBOARD_H
 #include "layers.h"
 
-#ifndef SECURE
-    #define SECURE "INVALID_VALUE"
-#endif
+// #ifndef SECURE
+//     #define SECURE "INVALID_VALUE"
+// #endif
 
 enum custom_keycodes {
     SENDPW = SAFE_RANGE,
@@ -61,6 +61,7 @@ enum {
 #define CTSFESC RCS(KC_ESC)
 #define SYMBTAB LT(_NUMB, KC_TAB)
 #define SEND_SECURE_STRING() SEND_STRING(SECURE)
+#define LT_TAB LT(_SYMB, KC_TAB)
 
   //////////////////////////////////////////////////////////////
  //////////////////////// TAP DANCE /////////////////////////// 
@@ -97,8 +98,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // [0]
 [_QWTY] = LAYOUT_split_3x6_3(
 
-     LT_ESC,     KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,/*       */   KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,  KC_BSPC,
-    SYMBTAB,     KC_A,     KC_S,     KC_D,     KC_F,     KC_G,/*       */   KC_H,     KC_J,     KC_K,     KC_L,  KC_SCLN,  LT_QUOT,
+     KC_ESC,     KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,/*       */   KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,  KC_BSPC,
+     LT_TAB,     KC_A,     KC_S,     KC_D,     KC_F,     KC_G,/*       */   KC_H,     KC_J,     KC_K,     KC_L,  KC_SCLN,  LT_QUOT,
     SC_LSPO,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,/*       */   KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SLSH,  SC_RSPC,
     /*                          */MT_C_DL,  MT_A_BS,  LT_ENTR,/*       */LT_SPAC,  MT_G_PS,  MEH_F24
 
@@ -119,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
     _______,  _______,  _______,  _______,  _______,  KC_WH_U,/*       */_______,  _______,  _______,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  KC_WH_D,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  KC_WH_D,/*       */_______,  _______,  _______,  _______,  _______,  QK_LLCK,
     /*                          */_______,  KC_BTN2,  KC_BTN1,/*       */KC_BTN1,  KC_BTN2,  _______
 
     ),
@@ -129,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
      KC_GRV,  PALETTE,  COPY_DN,  MOVE_UP,  COPY_UP,  C(KC_D),/*       */ KC_GRV,     KC_7,     KC_8,     KC_9,  KC_PMNS,  KC_BSPC,
     MO_LOWR,  C(KC_A),  KC_LEFT,  MOVE_DN,  KC_RGHT,  SELCTAL,/*       */KC_LBRC,     KC_4,     KC_5,     KC_6,  KC_RBRC,  KC_DEL,
-    KC_CAPS,  C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),  C(KC_Y),/*       */ KC_EQL,     KC_1,     KC_2,     KC_3,  KC_BSLS,  KC_PCMM,
+    KC_CAPS,  C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),  C(KC_Y),/*       */ KC_EQL,     KC_1,     KC_2,     KC_3,  KC_BSLS,  _______,
     /*                          */KC_PGUP,  KC_PGDN,  _______,/*       */KC_MINS,     KC_0,   KC_DOT
 
     ),
@@ -139,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
      KC_GRV,  _______,     KC_7,     KC_8,     KC_9,  _______,/*       */KC_TILD,  S(KC_7),  S(KC_8),  S(KC_9),  S(KC_0),  DEL_WRD,
     _______,  _______,     KC_4,     KC_5,     KC_6,  _______,/*       */KC_LCBR,  S(KC_4),  S(KC_5),  S(KC_6),  KC_RCBR,  KC_DQUO,
-    CW_TOGG,     KC_0,     KC_1,     KC_2,     KC_3,  _______,/*       */KC_PLUS,  S(KC_1),  S(KC_2),  S(KC_3),  KC_QUES,  KC_PIPE,
+    CW_TOGG,     KC_0,     KC_1,     KC_2,     KC_3,  _______,/*       */KC_PLUS,  S(KC_1),  S(KC_2),  S(KC_3),  KC_QUES,  _______,
     /*                          */_______,  _______,  MO_LOWR,/*       */KC_UNDS,  KC_LABK,  KC_RABK
 
     ),
@@ -157,19 +158,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // [6]
 [_FUNC] = LAYOUT_split_3x6_3(
 
-    _______,   KC_NUM,    KC_F7,    KC_F8,    KC_F9,   KC_F10,/*      */RGB_RMOD,  RGB_MOD,  KC_VOLU,  RGB_TOG,  CG_TOGG,  _______,
-    _______,  KC_SCRL,    KC_F4,    KC_F5,    KC_F6,   KC_F11,/*       */RGB_SPI,  KC_MPRV,  KC_VOLD,  KC_MNXT,  AG_TOGG,  _______,
-    OSM_SFT,  KC_PAUS,    KC_F1,    KC_F2,    KC_F3,   KC_F12,/*       */RGB_SPD,  KC_MSTP,  KC_MUTE,  KC_MPLY,  AU_TOGG,  _______,
-    /*                        */OSM_CTL,  OSM_ALT,  MO(_LOWR),/*       */_______,  OSM_GUI,  _______
+    _______,   KC_NUM,    KC_F7,    KC_F8,    KC_F9,   KC_F10,/*       */_______,   C_LEFT,    KC_UP,   C_RGHT,  KC_PGUP,   KC_DEL,
+    _______,  KC_SCRL,    KC_F4,    KC_F5,    KC_F6,   KC_F11,/*       */KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,   KC_END,  _______,
+    OSM_SFT,  KC_PAUS,    KC_F1,    KC_F2,    KC_F3,   KC_F12,/*       */_______,  C(KC_X),  C(KC_C),  C(KC_V),  KC_PGDN,  _______,
+    /*                        */OSM_CTL,  OSM_ALT,  MO(_LOWR),/*       */_______,  _______,  _______
 
     ),
 
 // [7]
 [_LOWR] = LAYOUT_split_3x6_3(
 
-    QK_BOOT,  _______,  WINLOCK,  CTALDEL,  CTSFESC,  _______,/*       */_______,  _______,   SENDPW,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    QK_BOOT,  _______,  WINLOCK,  CTALDEL,  CTSFESC,  _______,/*       */ SENDPW,  RM_HUED,  RM_VALU,  RM_HUEU,  RM_TOGG,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */RM_SPDU,  RM_PREV,  RM_VALD,  RM_NEXT,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */RM_SPDD,  RM_SATD,  _______,  RM_SATU,  _______,  _______,
     /*                         */ _______,  _______,  _______,/*       */MO_MENU,  _______,  _______
 
     ),
@@ -369,8 +370,6 @@ const key_override_t gravegui_esc_override = ko_make_basic(MOD_MASK_GUI, KC_ESC,
 
 // CTRL + esc = `
 const key_override_t gravectrl_esc_override = ko_make_basic(MOD_MASK_CTRL, KC_ESC, KC_GRV);
-
-
 
 const key_override_t *key_overrides[] = {
     &delete_key_override,
