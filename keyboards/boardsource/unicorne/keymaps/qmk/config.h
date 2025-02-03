@@ -17,7 +17,7 @@
 #    if defined(GOODBYE_SONG)
 #    undef GOODBYE_SONG
 #    endif
-#    define GOODBYE_SONG        SONG(SONIC_RING)
+#    define GOODBYE_SONG        SONG(MEGALOVANIA_SHORT)
 #    if defined(DEFAULT_LAYER_SONGS)
 #    undef DEFAULT_LAYER_SONGS
 #    endif

@@ -21,7 +21,7 @@
             "combo": true,
             "send_string": true,
             "caps_word": true,
-            "tap_dance": true
+            "tap_dance": false
         },
         "tapping": {
             "permissive_hold": true,

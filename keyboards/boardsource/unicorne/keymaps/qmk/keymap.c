@@ -11,10 +11,6 @@ enum custom_keycodes {
     SENDPW = SAFE_RANGE,
 };
 
-enum {
-    QUOLOCK,
-};
-
   //////////////////////////////////////////////////////////////
  //////////////////////// KEY DEFINITIONS ///////////////////// 
 //////////////////////////////////////////////////////////////
@@ -27,6 +23,7 @@ enum {
 #define LT_SPAC LT(_NAVI, KC_SPACE)
 #define LT_SLSH LT(_FUNC, KC_SLSH)
 #define MO_MENU MO(_MENU)
+#define MO_RAIS MO(_RAIS)
 #define MT_G_PS RGUI_T(KC_PSCR)
 #define MEH_F24 MEH_T(KC_F24)
 #define OSM_SFT OSM(MOD_LSFT)
@@ -60,12 +57,21 @@ enum {
 #define CTALDEL LCA(KC_DEL)
 #define CTSFESC RCS(KC_ESC)
 #define SYMBTAB LT(_NUMB, KC_TAB)
-#define SEND_SECURE_STRING() SEND_STRING(SECURE)
 #define LT_TAB LT(_SYMB, KC_TAB)
+
+// For debugging: Show the value of SECURE during compilation
+#pragma message("SECURE is defined as: " SECURE)
+
+// Use SECURE directly, as it should now be a properly quoted string
+#define SEND_SECURE_STRING() SEND_STRING(SECURE)
 
   //////////////////////////////////////////////////////////////
  //////////////////////// TAP DANCE /////////////////////////// 
 //////////////////////////////////////////////////////////////
+
+// enum {
+//     QUOLOCK,
+// };
 
 // Tap Dance definitions
 // enum {
@@ -130,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
      KC_GRV,  PALETTE,  COPY_DN,  MOVE_UP,  COPY_UP,  C(KC_D),/*       */ KC_GRV,     KC_7,     KC_8,     KC_9,  KC_PMNS,  KC_BSPC,
     MO_LOWR,  C(KC_A),  KC_LEFT,  MOVE_DN,  KC_RGHT,  SELCTAL,/*       */KC_LBRC,     KC_4,     KC_5,     KC_6,  KC_RBRC,  KC_DEL,
-    KC_CAPS,  C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),  C(KC_Y),/*       */ KC_EQL,     KC_1,     KC_2,     KC_3,  KC_BSLS,  _______,
+    KC_CAPS,  C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),  C(KC_Y),/*       */ KC_EQL,     KC_1,     KC_2,     KC_3,  KC_BSLS,  QK_LLCK,
     /*                          */KC_PGUP,  KC_PGDN,  _______,/*       */KC_MINS,     KC_0,   KC_DOT
 
     ),
@@ -140,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
      KC_GRV,  _______,     KC_7,     KC_8,     KC_9,  _______,/*       */KC_TILD,  S(KC_7),  S(KC_8),  S(KC_9),  S(KC_0),  DEL_WRD,
     _______,  _______,     KC_4,     KC_5,     KC_6,  _______,/*       */KC_LCBR,  S(KC_4),  S(KC_5),  S(KC_6),  KC_RCBR,  KC_DQUO,
-    CW_TOGG,     KC_0,     KC_1,     KC_2,     KC_3,  _______,/*       */KC_PLUS,  S(KC_1),  S(KC_2),  S(KC_3),  KC_QUES,  _______,
+    CW_TOGG,     KC_0,     KC_1,     KC_2,     KC_3,  _______,/*       */KC_PLUS,  S(KC_1),  S(KC_2),  S(KC_3),  KC_QUES,  QK_LLCK,
     /*                          */_______,  _______,  MO_LOWR,/*       */KC_UNDS,  KC_LABK,  KC_RABK
 
     ),
@@ -149,8 +155,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NAVI] = LAYOUT_split_3x6_3(
 
        S_UP,  KC_HOME,   C_LEFT,    KC_UP,   C_RGHT,   KC_END,/*       */KC_ACL0,  KC_WH_L,  KC_MS_U,  KC_WH_R,  KC_ACL1,  KC_ACL2,
-     KC_TAB,   S_LEFT,  KC_LEFT,  KC_DOWN,  KC_RGHT,   S_RGHT,/*       */KC_WH_U,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_BTN5,  MO(_RAIS),
-    SFT_TAB,   S_HOME,  CS_LEFT,   S_DOWN,  CS_RGHT,    S_END,/*       */KC_WH_D,  KC_BTN1,  KC_BTN3,  KC_BTN2,  KC_BTN4,  _______,
+     KC_TAB,   S_LEFT,  KC_LEFT,  KC_DOWN,  KC_RGHT,   S_RGHT,/*       */KC_WH_U,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_BTN5,  MO_RAIS,
+    SFT_TAB,   S_HOME,  CS_LEFT,   S_DOWN,  CS_RGHT,    S_END,/*       */KC_WH_D,  KC_BTN1,  KC_BTN3,  KC_BTN2,  KC_BTN4,  QK_LLCK,
     /*                          */C(KC_C),  C(KC_V),   KC_ENT,/*       */_______,  _______,  _______
 
     ),
@@ -160,8 +166,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     _______,   KC_NUM,    KC_F7,    KC_F8,    KC_F9,   KC_F10,/*       */_______,   C_LEFT,    KC_UP,   C_RGHT,  KC_PGUP,   KC_DEL,
     _______,  KC_SCRL,    KC_F4,    KC_F5,    KC_F6,   KC_F11,/*       */KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,   KC_END,  _______,
-    OSM_SFT,  KC_PAUS,    KC_F1,    KC_F2,    KC_F3,   KC_F12,/*       */_______,  C(KC_X),  C(KC_C),  C(KC_V),  KC_PGDN,  _______,
-    /*                        */OSM_CTL,  OSM_ALT,  MO(_LOWR),/*       */_______,  _______,  _______
+    OSM_SFT,  KC_PAUS,    KC_F1,    KC_F2,    KC_F3,   KC_F12,/*       */_______,  C(KC_X),  C(KC_C),  C(KC_V),  KC_PGDN,  QK_LLCK,
+    /*                        */OSM_CTL,  OSM_ALT,  MO(_LOWR),/*       */MO_RAIS,  _______,  _______
 
     ),
 
@@ -170,7 +176,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     QK_BOOT,  _______,  WINLOCK,  CTALDEL,  CTSFESC,  _______,/*       */ SENDPW,  RM_HUED,  RM_VALU,  RM_HUEU,  RM_TOGG,  _______,
     _______,  _______,  _______,  _______,  _______,  _______,/*       */RM_SPDU,  RM_PREV,  RM_VALD,  RM_NEXT,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  _______,/*       */RM_SPDD,  RM_SATD,  _______,  RM_SATU,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */RM_SPDD,  RM_SATD,  _______,  RM_SATU,  _______,  QK_LLCK,
     /*                         */ _______,  _______,  _______,/*       */MO_MENU,  _______,  _______
 
     ),
@@ -178,9 +184,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // [8]
 [_RAIS] = LAYOUT_split_3x6_3(
 
-    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  QK_BOOT,
-    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */CG_TOGG,  GE_SWAP,  AU_TOGG,  _______,  _______,  QK_BOOT,
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */AG_TOGG,  GE_NORM,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */GU_TOGG,  _______,  _______,  _______,  _______,  QK_LLCK,
     /*                          */_______,  _______,  MO_MENU,/*       */_______,  _______,  _______
 
     ),
@@ -190,7 +196,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
     _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  QK_LLCK,
     /*                         */ _______,  _______,  _______,/*       */_______,  _______,  _______
 
     )
