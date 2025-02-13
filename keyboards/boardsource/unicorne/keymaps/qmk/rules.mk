@@ -13,6 +13,6 @@ POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
 
 ########################################################
 
-$(info *** Value of SECURE in rules.mk: '$(SECURE)' ***)
+# $(info *** Value of SECURE in rules.mk: '$(SECURE)' ***)
 
-CFLAGS += -DSECURE=\"$(SECURE)\"
+# CFLAGS += -DSECURE=\"$(SECURE)\"

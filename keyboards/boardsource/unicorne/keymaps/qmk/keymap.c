@@ -3,9 +3,9 @@
 #include QMK_KEYBOARD_H
 #include "layers.h"
 
-// #ifndef SECURE
-//     #define SECURE "INVALID_VALUE"
-// #endif
+#ifndef SECURE
+    #define SECURE "null"
+#endif
 
 enum custom_keycodes {
     SENDPW = SAFE_RANGE,
@@ -48,7 +48,7 @@ enum custom_keycodes {
 #define COPY_DN LSA(KC_DOWN)
 #define COPY_UP LSA(KC_UP)
 #define MOVE_UP LALT(KC_UP)
-#define MOVE_DN LSA(KC_DOWN)
+#define MOVE_DN LALT(KC_DOWN)
 #define SELCTAL C(S(KC_L))
 #define MO_LOWR MO(_LOWR)
 #define DEL_WRD C(KC_BSPC)
@@ -125,8 +125,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_MOUS] = LAYOUT_split_3x6_3(
 
     _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  KC_WH_U,/*       */_______,  _______,  _______,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  KC_WH_D,/*       */_______,  _______,  _______,  _______,  _______,  QK_LLCK,
+    _______,  _______,  _______,  _______,  _______,  KC_WH_U,/*       */KC_WH_U,  _______,  _______,  _______,  _______,  _______,
+    _______,  C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),  KC_WH_D,/*       */KC_WH_D,  _______,  _______,  _______,  _______,  QK_LLCK,
     /*                          */_______,  KC_BTN2,  KC_BTN1,/*       */KC_BTN1,  KC_BTN2,  _______
 
     ),
@@ -335,9 +335,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case SENDPW:
             if (record->event.pressed) {
                 SEND_SECURE_STRING();
-                #    if defined(AUDIO_ENABLE)
-                audio_play_melody(&send_pw, NOTE_ARRAY_SIZE(send_pw), false);
-                #    endif
+                // #    if defined(AUDIO_ENABLE)
+                // audio_play_melody(&send_pw, NOTE_ARRAY_SIZE(send_pw), false);
+                // #    endif
             }
             return false;
 
