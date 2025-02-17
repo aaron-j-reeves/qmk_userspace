@@ -60,7 +60,7 @@ enum custom_keycodes {
 #define LT_TAB LT(_SYMB, KC_TAB)
 
 // For debugging: Show the value of SECURE during compilation
-#pragma message("SECURE is defined as: " SECURE)
+// #pragma message("SECURE is defined as: " SECURE)
 
 // Use SECURE directly, as it should now be a properly quoted string
 #define SEND_SECURE_STRING() SEND_STRING(SECURE)
@@ -326,9 +326,9 @@ void caps_word_set_user(bool active) {
  ///////////////////// CUSTOM KEY HANDLING //////////////////////
 ////////////////////////////////////////////////////////////////
 
-void pointing_device_init_user(void) {
-    set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
-}
+// void pointing_device_init_user(void) {
+//     set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
+// }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
