@@ -6,7 +6,7 @@
     "layout": "LAYOUT_split_3x6_3",
     "config": {
         "features": {
-            "audio": true,
+            "audio": false,
             "bootmagic": true,
             "encoder": false,
             "extrakey": true,
@@ -31,12 +31,12 @@
         "split": {
             "transport": {
                 "sync": {
-                    "activity": false,
+                    "activity": true,
                     "detected_os": false,
                     "haptic": false,
                     "layer_state": true,
                     "indicators": true,
-                    "matrix_state": false,
+                    "matrix_state": true,
                     "modifiers": true,
                     "oled": true,
                     "st7565": false,
