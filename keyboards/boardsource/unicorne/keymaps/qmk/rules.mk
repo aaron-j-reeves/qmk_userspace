@@ -14,6 +14,6 @@ POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
 
 ########################################################
 
+# uncomment to use --env option with qmk compile
 # $(info *** Value of SECURE in rules.mk: '$(SECURE)' ***)
-
 # CFLAGS += -DSECURE=\"$(SECURE)\"
