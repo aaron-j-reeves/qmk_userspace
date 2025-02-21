@@ -4,7 +4,7 @@
 #include "layers.h"
 
 #ifndef SECURE
-    #define SECURE "null"
+    #define SECURE "'F@6y[Wf!k?g7GTU80hczB~J"
 #endif
 
 enum custom_keycodes {
@@ -124,10 +124,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // [2]
 [_MOUS] = LAYOUT_split_3x6_3(
 
-    _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  KC_WH_U,/*       */KC_WH_U,  _______,  _______,  _______,  _______,  _______,
-    _______,  C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),  KC_WH_D,/*       */KC_WH_D,  _______,  _______,  _______,  _______,  QK_LLCK,
-    /*                          */_______,  KC_BTN2,  KC_BTN1,/*       */KC_BTN1,  KC_BTN2,  _______
+    _______,  _______,  _______,  _______,  _______,  MS_BTN2,/*       */MS_BTN2,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  MS_WHLU,/*       */MS_WHLU,  _______,  _______,  _______,  _______,  _______,
+    OSM_SFT,  C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),  MS_WHLD,/*       */MS_WHLD,  _______,  _______,  _______,  _______,  QK_LLCK,
+    /*                          */OSM_CTL,  OSM_ALT,  MS_BTN1,/*       */MS_BTN1,  MS_BTN4,  MS_BTN5
 
     ),
 
@@ -154,9 +154,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // [5]
 [_NAVI] = LAYOUT_split_3x6_3(
 
-       S_UP,  KC_HOME,   C_LEFT,    KC_UP,   C_RGHT,   KC_END,/*       */KC_ACL0,  KC_WH_L,  KC_MS_U,  KC_WH_R,  KC_ACL1,  KC_ACL2,
-     KC_TAB,   S_LEFT,  KC_LEFT,  KC_DOWN,  KC_RGHT,   S_RGHT,/*       */KC_WH_U,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_BTN5,  MO_RAIS,
-    SFT_TAB,   S_HOME,  CS_LEFT,   S_DOWN,  CS_RGHT,    S_END,/*       */KC_WH_D,  KC_BTN1,  KC_BTN3,  KC_BTN2,  KC_BTN4,  QK_LLCK,
+       S_UP,  KC_HOME,   C_LEFT,    KC_UP,   C_RGHT,   KC_END,/*       */_______,  MS_WHLL,    MS_UP,  MS_WHLR,  MS_BTN5,  _______,
+     KC_TAB,   S_LEFT,  KC_LEFT,  KC_DOWN,  KC_RGHT,   S_RGHT,/*       */MS_WHLU,  MS_LEFT,  MS_DOWN,  MS_RGHT,  MS_BTN4,  MO_RAIS,
+    SFT_TAB,   S_HOME,  CS_LEFT,   S_DOWN,  CS_RGHT,    S_END,/*       */MS_WHLD,  MS_BTN1,  MS_BTN3,  MS_BTN2,  MS_BTN4,  QK_LLCK,
     /*                          */C(KC_C),  C(KC_V),   KC_ENT,/*       */_______,  _______,  _______
 
     ),
@@ -326,9 +326,9 @@ void caps_word_set_user(bool active) {
  ///////////////////// CUSTOM KEY HANDLING //////////////////////
 ////////////////////////////////////////////////////////////////
 
-// void pointing_device_init_user(void) {
-//     set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
-// }
+void pointing_device_init_user(void) {
+    set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
