@@ -4,11 +4,12 @@
 #include "layers.h"
 
 #ifndef SECURE
-    #define SECURE "'F@6y[Wf!k?g7GTU80hczB~J"
+    #define SECURE "null"
 #endif
 
 enum custom_keycodes {
     SENDPW = SAFE_RANGE,
+    MOUSOFF,
 };
 
   //////////////////////////////////////////////////////////////
@@ -124,10 +125,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // [2]
 [_MOUS] = LAYOUT_split_3x6_3(
 
-    _______,  _______,  _______,  _______,  _______,  MS_BTN2,/*       */MS_BTN2,  _______,  _______,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  MS_WHLU,/*       */MS_WHLU,  _______,  _______,  _______,  _______,  _______,
-    OSM_SFT,  C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),  MS_WHLD,/*       */MS_WHLD,  _______,  _______,  _______,  _______,  QK_LLCK,
-    /*                          */OSM_CTL,  OSM_ALT,  MS_BTN1,/*       */MS_BTN1,  MS_BTN4,  MS_BTN5
+    _______,  _______,  _______,  _______,  MS_WHLL,  MS_WHLR,/*       */MS_WHLL,  MS_WHLR,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  MS_BTN5,  MS_WHLU,/*       */MS_WHLU,  MS_BTN5,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  MS_BTN4,  MS_WHLD,/*       */MS_WHLD,  MS_BTN4,  _______,  _______,  _______,  QK_LLCK,
+    /*                          */MOUSOFF,  MS_BTN2,  MS_BTN1,/*       */MS_BTN1,  MS_BTN2,  MOUSOFF
 
     ),
 
@@ -341,15 +342,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
-        case SYMBTAB:
-            if (record->tap.count == 0) {           // On hold.
-                if (record->event.pressed) {        // On press.
-                    register_mods(MOD_BIT(KC_LSFT)); // Hold left Shift.
-                } else {                            // On release.
-                    unregister_mods(MOD_BIT(KC_LSFT)); // Release left Shift.
+        // case SYMBTAB:
+        //     if (record->tap.count == 0) {           // On hold.
+        //         if (record->event.pressed) {        // On press.
+        //             register_mods(MOD_BIT(KC_LSFT)); // Hold left Shift.
+        //         } else {                            // On release.
+        //             unregister_mods(MOD_BIT(KC_LSFT)); // Release left Shift.
+        //         }
+        //     }
+        //     return true;
+        case MOUSOFF:
+            if (record->event.pressed) {  // Check if the key is pressed
+                if (IS_LAYER_ON(_MOUS)) {  // Check if the target layer is active
+                    layer_off(_MOUS);  // Deactivate the target layer
                 }
             }
-            return true;
+            return false;  // Skip default processing for this key
 
         default:
             return true;
