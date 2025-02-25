@@ -65,7 +65,7 @@
 
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 #define AUTO_MOUSE_DEFAULT_LAYER 2
-#define AUTO_MOUSE_TIME 1500
+#define AUTO_MOUSE_TIME 1000
 
 #endif
 #if defined(POINTING_DEVICE_DRIVER_analog_joystick)
