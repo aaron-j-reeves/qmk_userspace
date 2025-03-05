@@ -34,7 +34,7 @@ enum custom_keycodes {
 #define CS_LEFT RCS(KC_LEFT)
 #define CS_DOWN RCS(KC_DOWN)
 #define CS_UP RCS(KC_UP)
-#define CS_RGHT C(KC_RGHT)
+#define CS_RGHT RCS(KC_RGHT)
 #define C_LEFT C(KC_LEFT)
 #define S_LEFT S(KC_LEFT)
 #define S_RGHT S(KC_RGHT)
