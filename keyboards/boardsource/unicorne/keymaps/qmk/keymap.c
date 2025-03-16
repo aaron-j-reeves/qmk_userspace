@@ -54,6 +54,7 @@ enum custom_keycodes {
 #define MO_LOWR MO(_LOWR)
 #define DEL_WRD C(KC_BSPC)
 #define SFT_TAB S(KC_TAB)
+#define CTL_TAB C(KC_TAB)
 #define WINLOCK LGUI(KC_L)
 #define CTALDEL LCA(KC_DEL)
 #define CTSFESC RCS(KC_ESC)
@@ -113,16 +114,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
 // [1]
-[_GALM] = LAYOUT_split_3x6_3(
-
-    _______,     KC_B,     KC_L,     KC_D,     KC_C,     KC_V,/*       */   KC_J,     KC_Y,     KC_O,     KC_U,  KC_COMM,  _______,
-    _______,     KC_N,     KC_R,     KC_T,     KC_S,     KC_G,/*       */   KC_P,     KC_H,     KC_A,     KC_E,     KC_I,  LT_SLSH,
-    _______,     KC_X,     KC_Q,     KC_M,     KC_W,     KC_Z,/*       */   KC_K,     KC_F,  LT_QUOT,  KC_SCLN,   KC_DOT,  _______,
-    /*                          */_______,  _______,  _______,/*       */_______,  _______,  _______
-
-    ),
-
-// [2]
 [_MOUS] = LAYOUT_split_3x6_3(
 
     _______,  _______,  _______,  _______,  MS_WHLL,  MS_WHLR,/*       */MS_WHLL,  MS_WHLR,  _______,  _______,  _______,  _______,
@@ -132,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
 
-// [3]
+// [2]
 [_NUMB] = LAYOUT_split_3x6_3(
 
      KC_GRV,  PALETTE,  COPY_DN,  MOVE_UP,  COPY_UP,  C(KC_D),/*       */ KC_GRV,     KC_7,     KC_8,     KC_9,  KC_PMNS,  KC_BSPC,
@@ -142,17 +133,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
 
-// [4]
+// [3]
 [_SYMB] = LAYOUT_split_3x6_3(
 
-     KC_GRV,  _______,     KC_7,     KC_8,     KC_9,  _______,/*       */KC_TILD,  S(KC_7),  S(KC_8),  S(KC_9),  S(KC_0),  DEL_WRD,
-    _______,  _______,     KC_4,     KC_5,     KC_6,  _______,/*       */KC_LCBR,  S(KC_4),  S(KC_5),  S(KC_6),  KC_RCBR,  KC_DQUO,
-    CW_TOGG,     KC_0,     KC_1,     KC_2,     KC_3,  _______,/*       */KC_PLUS,  S(KC_1),  S(KC_2),  S(KC_3),  KC_QUES,  QK_LLCK,
-    /*                          */_______,  _______,  MO_LOWR,/*       */KC_UNDS,  KC_LABK,  KC_RABK
+     KC_ESC,   KC_GRV,   KC_F13,   KC_F14,   KC_F15,   KC_F22,/*       */KC_TILD,  S(KC_7),  S(KC_8),  S(KC_9),  S(KC_0),  DEL_WRD,
+    _______,   KC_ENT,   KC_F16,   KC_F17,   KC_F18,   KC_F23,/*       */KC_LCBR,  S(KC_4),  S(KC_5),  S(KC_6),  KC_RCBR,  KC_DQUO,
+    CW_TOGG,  C(KC_V),   KC_F19,   KC_F20,   KC_F21,   KC_F24,/*       */KC_PLUS,  S(KC_1),  S(KC_2),  S(KC_3),  KC_QUES,  QK_LLCK,
+    /*                          */CTL_TAB,  SFT_TAB,  MO_LOWR,/*       */KC_UNDS,  KC_LABK,  KC_RABK
 
     ),
 
-// [5]
+// [4]
 [_NAVI] = LAYOUT_split_3x6_3(
 
        S_UP,  KC_HOME,   C_LEFT,    KC_UP,   C_RGHT,   KC_END,/*       */_______,  MS_WHLL,    MS_UP,  MS_WHLR,  MS_BTN5,  _______,
@@ -162,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
 
-// [6]
+// [5]
 [_FUNC] = LAYOUT_split_3x6_3(
 
     _______,   KC_NUM,    KC_F7,    KC_F8,    KC_F9,   KC_F10,/*       */_______,   C_LEFT,    KC_UP,   C_RGHT,  KC_PGUP,   KC_DEL,
@@ -172,7 +163,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
 
-// [7]
+// [6]
 [_LOWR] = LAYOUT_split_3x6_3(
 
     QK_BOOT,  _______,  WINLOCK,  CTALDEL,  CTSFESC,  _______,/*       */ SENDPW,  RM_HUED,  RM_VALU,  RM_HUEU,  RM_TOGG,  _______,
@@ -182,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
 
-// [8]
+// [7]
 [_RAIS] = LAYOUT_split_3x6_3(
 
     _______,  _______,  _______,  _______,  _______,  _______,/*       */CG_TOGG,  GE_SWAP,  AU_TOGG,  _______,  _______,  QK_BOOT,
@@ -192,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
 
-// [9]
+// [8]
 [_MENU] = LAYOUT_split_3x6_3(
 
     _______,  _______,  _______,  _______,  _______,  _______,/*       */_______,  _______,  _______,  _______,  _______,  _______,
@@ -419,6 +410,8 @@ enum combos {
     COMBO_LCBR, // A + S + D -> {
     COMBO_DLR, // S + D + F -> }
     COMBO_RCBR, // D + F + G -> }
+    COMBO_PGUP, // Q + W + E -> Page Up
+    COMBO_PGDN, // E + R + T -> Page Down
 };
 
 // Define key combo arrays
@@ -438,6 +431,9 @@ const uint16_t PROGMEM combo_c_v_b[] = {KC_C, KC_V, KC_B, COMBO_END};
 const uint16_t PROGMEM combo_a_s_d[] = {KC_A, KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM combo_s_d_f[] = {KC_S, KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM combo_d_f_g[] = {KC_D, KC_F, KC_G, COMBO_END};
+const uint16_t PROGMEM combo_q_w_e[] = {KC_Q, KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM combo_e_r_t[] = {KC_E, KC_R, KC_T, COMBO_END};
+
 
 // Map combos to their resulting keycodes
 combo_t key_combos[] = {
@@ -456,7 +452,9 @@ combo_t key_combos[] = {
     [COMBO_PASTE] = COMBO(combo_c_v_b, C(KC_V)),
     [COMBO_LCBR] = COMBO(combo_a_s_d, KC_LCBR),
     [COMBO_DLR] = COMBO(combo_s_d_f, KC_DLR),
-    [COMBO_RCBR] = COMBO(combo_d_f_g, KC_RCBR)
+    [COMBO_RCBR] = COMBO(combo_d_f_g, KC_RCBR),
+    [COMBO_PGUP] = COMBO(combo_q_w_e, KC_PGUP),
+    [COMBO_PGDN] = COMBO(combo_e_r_t, KC_PGDN)
 };
 
 #endif

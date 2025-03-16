@@ -10,13 +10,16 @@ void render_feature_status(const char* label, bool active) {
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    // Rotate the master side (usually the left half)
-    if (is_keyboard_master()) {
-        return OLED_ROTATION_270;  // Rotate 90 degrees to the right
-    } else {
-        // Rotate the non-master side (usually the right half)
-        return OLED_ROTATION_270;  // Rotate 270 degrees to the right (which is 90 degrees to the left)
-    }
+
+    return OLED_ROTATION_270;  // Rotate 270 degrees to the right (which is 90 degrees to the left)
+
+    // // Rotate the master side (usually the left half)
+    // if (is_keyboard_master()) {
+    //     return OLED_ROTATION_270;  // Rotate 90 degrees to the right
+    // } else {
+    //     // Rotate the non-master side (usually the right half)
+    //     return OLED_ROTATION_270;  // Rotate 270 degrees to the right (which is 90 degrees to the left)
+    // }
 }
 
 void render_status(void) {
@@ -46,29 +49,32 @@ void render_status(void) {
 }
 
 bool oled_task_user(void) {
-    if (is_keyboard_master()) {
-        render_status();  // Display status on the master side
-    } else {
-        // Non-master side rendering
-        oled_clear();
 
-        uint8_t current_layer = get_highest_layer(layer_state);
+    render_status();  // Display status
 
-        // Iterate over all layers
-        for (uint8_t i = 0; i < _LAYER_COUNT; i++) {
-            // Set cursor position, leaving a blank line between layers
-            oled_set_cursor(0, i * 2);
+    // if (is_keyboard_master()) {
+    //     render_status();  // Display status on the master side
+    // } else {
+    //     // Non-master side rendering
+    //     oled_clear();
 
-            // Check if the layer is active
-            bool is_active = (current_layer == i);
+    //     uint8_t current_layer = get_highest_layer(layer_state);
 
-            // Access layer name directly
-            const char *layer_name = layer_names[i];
+    //     // Iterate over all layers
+    //     for (uint8_t i = 0; i < _LAYER_COUNT; i++) {
+    //         // Set cursor position, leaving a blank line between layers
+    //         oled_set_cursor(0, i * 2);
 
-            // Write the layer name, inverted if active
-            oled_write(layer_name, is_active);
-        }
-    }
+    //         // Check if the layer is active
+    //         bool is_active = (current_layer == i);
+
+    //         // Access layer name directly
+    //         const char *layer_name = layer_names[i];
+
+    //         // Write the layer name, inverted if active
+    //         oled_write(layer_name, is_active);
+    //     }
+    // }
     return false;
 }
 

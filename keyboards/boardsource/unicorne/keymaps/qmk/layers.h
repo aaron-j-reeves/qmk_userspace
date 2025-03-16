@@ -5,7 +5,6 @@
 // Define the layers
 enum layers {
     _QWTY,
-    _GALM,
     _MOUS,
     _NUMB,
     _SYMB,
@@ -20,7 +19,6 @@ enum layers {
 // Layer names stored in regular memory
 static const char *const layer_names[] = {
     "QWTY",
-    "GALM",
     "MOUS",
     "NUMB",
     "SYMB",
