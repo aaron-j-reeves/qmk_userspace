@@ -1,5 +1,4 @@
 {
-    "version": "1",
     "author": "aaronjreeves@gmail.com",
     "keyboard": "boardsource/unicorne",
     "keymap": "qmk",
@@ -25,7 +24,7 @@
         },
         "tapping": {
             "permissive_hold": true,
-            "term": 250,
+            "term": 200,
             "toggle": 3
         },
         "split": {

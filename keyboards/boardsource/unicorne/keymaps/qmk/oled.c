@@ -10,16 +10,8 @@ void render_feature_status(const char* label, bool active) {
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-
-    return OLED_ROTATION_270;  // Rotate 270 degrees to the right (which is 90 degrees to the left)
-
-    // // Rotate the master side (usually the left half)
-    // if (is_keyboard_master()) {
-    //     return OLED_ROTATION_270;  // Rotate 90 degrees to the right
-    // } else {
-    //     // Rotate the non-master side (usually the right half)
-    //     return OLED_ROTATION_270;  // Rotate 270 degrees to the right (which is 90 degrees to the left)
-    // }
+    // Since the OLED is always on the left side, always return the same rotation
+    return OLED_ROTATION_270;
 }
 
 void render_status(void) {
@@ -75,7 +67,7 @@ bool oled_task_user(void) {
     //         oled_write(layer_name, is_active);
     //     }
     // }
-    return false;
+    return true;
 }
 
 #endif // OLED_ENABLE

@@ -4,7 +4,7 @@
 #include "layers.h"
 
 #ifndef SECURE
-    #define SECURE "null"
+    #define SECURE ".oH?xVn2(W!c!}!1Tsp2[NZi"
 #endif
 
 enum custom_keycodes {
@@ -113,17 +113,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
 
+
 // [1]
-[_MOUS] = LAYOUT_split_3x6_3(
-
-    _______,  _______,  _______,  _______,  MS_WHLL,  MS_WHLR,/*       */MS_WHLL,  MS_WHLR,  _______,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  MS_BTN5,  MS_WHLU,/*       */MS_WHLU,  MS_BTN5,  _______,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  MS_BTN4,  MS_WHLD,/*       */MS_WHLD,  MS_BTN4,  _______,  _______,  _______,  QK_LLCK,
-    /*                          */MOUSOFF,  MS_BTN2,  MS_BTN1,/*       */MS_BTN1,  MS_BTN2,  MOUSOFF
-
-    ),
-
-// [2]
 [_NUMB] = LAYOUT_split_3x6_3(
 
      KC_GRV,  PALETTE,  COPY_DN,  MOVE_UP,  COPY_UP,  C(KC_D),/*       */ KC_GRV,     KC_7,     KC_8,     KC_9,  KC_PMNS,  KC_BSPC,
@@ -133,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
 
-// [3]
+// [2]
 [_SYMB] = LAYOUT_split_3x6_3(
 
      KC_ESC,   KC_GRV,   KC_F13,   KC_F14,   KC_F15,   KC_F22,/*       */KC_TILD,  S(KC_7),  S(KC_8),  S(KC_9),  S(KC_0),  DEL_WRD,
@@ -143,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
 
-// [4]
+// [3]
 [_NAVI] = LAYOUT_split_3x6_3(
 
        S_UP,  KC_HOME,   C_LEFT,    KC_UP,   C_RGHT,   KC_END,/*       */_______,  MS_WHLL,    MS_UP,  MS_WHLR,  MS_BTN5,  _______,
@@ -153,13 +144,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     ),
 
-// [5]
+// [4]
 [_FUNC] = LAYOUT_split_3x6_3(
 
     _______,   KC_NUM,    KC_F7,    KC_F8,    KC_F9,   KC_F10,/*       */_______,   C_LEFT,    KC_UP,   C_RGHT,  KC_PGUP,   KC_DEL,
     _______,  KC_SCRL,    KC_F4,    KC_F5,    KC_F6,   KC_F11,/*       */KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,   KC_END,  _______,
     OSM_SFT,  KC_PAUS,    KC_F1,    KC_F2,    KC_F3,   KC_F12,/*       */_______,  C(KC_X),  C(KC_C),  C(KC_V),  KC_PGDN,  QK_LLCK,
     /*                        */OSM_CTL,  OSM_ALT,  MO(_LOWR),/*       */MO_RAIS,  _______,  _______
+
+    ),
+
+// [5]
+[_MOUS] = LAYOUT_split_3x6_3(
+
+    _______,  _______,  _______,  _______,  MS_WHLL,  MS_WHLR,/*       */MS_WHLL,  MS_WHLR,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  MS_BTN5,  MS_WHLU,/*       */MS_WHLU,  MS_BTN5,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  MS_BTN4,  MS_WHLD,/*       */MS_WHLD,  MS_BTN4,  _______,  _______,  _______,  QK_LLCK,
+    /*                          */MOUSOFF,  MS_BTN2,  MS_BTN1,/*       */MS_BTN1,  MS_BTN2,  MOUSOFF
 
     ),
 
@@ -263,7 +264,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 rgb_matrix_set_color(i, RGB_PINK);
                 break;
             case 7:
-                rgb_matrix_set_color(i, RGB_WHITE);
+                rgb_matrix_set_color(i, 0, 255, 170);
                 break;
             case 6:
                 rgb_matrix_set_color(i, RGB_ORANGE);
@@ -281,7 +282,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 rgb_matrix_set_color(i, RGB_BLUE);
                 break;
             case 1:
-                rgb_matrix_set_color(i, RGB_GOLD);
+                rgb_matrix_set_color(i, RGB_WHITE);
                 break;
             default:
                 break;
