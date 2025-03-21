@@ -2,8 +2,14 @@
 
 #include QMK_KEYBOARD_H
 #include "layers.h"
-#include "oled_render_menu.h"
+#include "../../../../../modules/drashna/display_menu/oled_render_menu.h"
+#include "../../../../../modules/drashna/display_menu/display_menu.h" // Include this for menu_state_t
 #ifdef OLED_ENABLE
+
+bool is_display_menu_active(void) {
+    extern menu_state_t menu_state; // Ensure this matches the external declaration
+    return menu_state.is_in_menu;
+}
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (!is_keyboard_left()) {

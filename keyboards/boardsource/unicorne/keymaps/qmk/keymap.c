@@ -2,6 +2,7 @@
 #pragma once
 #include QMK_KEYBOARD_H
 #include "layers.h"
+#include "../../../../../modules/getreuer/palettefx/palettefx.h"
 
 #ifndef SECURE
     #define SECURE "null"
