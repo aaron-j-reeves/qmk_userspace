@@ -2,12 +2,12 @@
 
 #include QMK_KEYBOARD_H
 #include "layers.h"
-#include "../../../../../modules/drashna/display_menu/oled_render_menu.h"
-#include "../../../../../modules/drashna/display_menu/display_menu.h" // Include this for menu_state_t
+#include "oled_render_menu.h"
+#include "display_menu.h" // Include this for menu_state_t
 #ifdef OLED_ENABLE
 
 bool is_display_menu_active(void) {
-    extern menu_state_t menu_state; // Ensure this matches the external declaration
+    extern menu_state_t menu_state;
     return menu_state.is_in_menu;
 }
 

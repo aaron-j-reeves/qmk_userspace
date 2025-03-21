@@ -10,8 +10,8 @@ qmk compile -kb boardsource/unicorne -km qmk
 qmk userspace-compile -c
 qmk compile -kb boardsource/unicorne -km qmk -c -j 0
 
-qmk flash -kb boardsource/unicorne -km qmk -bl uf2-split-left
-qmk flash -kb boardsource/unicorne -km qmk -bl uf2-split-right
+qmk flash -c -kb boardsource/unicorne -km qmk -bl uf2-split-left
+qmk flash -c -kb boardsource/unicorne -km qmk -bl uf2-split-right
 
 & 'C:\keyboard_stuff\repos\qmk_userspace\copy-kbfirmware.ps1'
 
