@@ -32,7 +32,7 @@
                 "$ref": "./definitions.jsonschema#/hex_number_4d"
             },
             "additionalProperties": {
-                "type": "object", // use 'qmk.definitions.v1#/keycode_decl' when problem keycodes are removed
+                "type": "object", // use './definitions.jsonschema#/keycode_decl' when problem keycodes are removed
                 "required": [
                     "key"
                 ],

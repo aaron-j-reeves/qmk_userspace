@@ -1,17 +1,21 @@
 // oled.c
+
 #include QMK_KEYBOARD_H
 #include "layers.h"
-
+#include "oled_render_menu.h"
 #ifdef OLED_ENABLE
+
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    if (!is_keyboard_left()) {
+        return OLED_ROTATION_270;
+    }
+
+    return OLED_ROTATION_90;
+}
 
 void render_feature_status(const char* label, bool active) {
     oled_write_P(label, active);
     oled_write_P(PSTR(" "), false);
-}
-
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    // Since the OLED is always on the left side, always return the same rotation
-    return OLED_ROTATION_270;
 }
 
 void render_status(void) {
@@ -41,33 +45,64 @@ void render_status(void) {
 }
 
 bool oled_task_user(void) {
+    // Check if display menu is active
+    if (is_display_menu_active()) {
+        if (is_keyboard_left()) {
+            // Render menu on the left side (menu_render_side = 1)
+            oled_render_menu(0, 0, 16, 1);
+        } else {
+            // Render menu on the right side (menu_render_side = 2)
+            oled_render_menu(0, 0, 16, 2);
+        }
+    } else {
+        render_status();  // Display status
+    }
 
-    render_status();  // Display status
-
-    // if (is_keyboard_master()) {
-    //     render_status();  // Display status on the master side
-    // } else {
-    //     // Non-master side rendering
-    //     oled_clear();
-
-    //     uint8_t current_layer = get_highest_layer(layer_state);
-
-    //     // Iterate over all layers
-    //     for (uint8_t i = 0; i < _LAYER_COUNT; i++) {
-    //         // Set cursor position, leaving a blank line between layers
-    //         oled_set_cursor(0, i * 2);
-
-    //         // Check if the layer is active
-    //         bool is_active = (current_layer == i);
-
-    //         // Access layer name directly
-    //         const char *layer_name = layer_names[i];
-
-    //         // Write the layer name, inverted if active
-    //         oled_write(layer_name, is_active);
-    //     }
-    // }
-    return true;
+    return false; // Skip default rendering
 }
+
+#if defined(COMMUNITY_MODULE_DISPLAY_MENU_ENABLE)
+bool process_record_display_menu_handling_user(uint16_t keycode, bool keep_processing) {
+    // Only process menu navigation if the menu is active
+    if (!is_display_menu_active() && keycode != DISPLAY_MENU) {
+        return keep_processing;
+    }
+
+    switch (keycode) {
+        case KC_D:
+            return menu_handle_input(menu_input_down);
+        case KC_E:
+            return menu_handle_input(menu_input_up);
+        case KC_F:
+            return menu_handle_input(menu_input_right);
+        case KC_S:
+            return menu_handle_input(menu_input_left);
+        case DISPLAY_MENU:
+            return menu_handle_input(menu_input_exit);
+        case KC_ESC:
+        case KC_BSPC:
+        case KC_DEL:
+            return menu_handle_input(menu_input_back);
+        case KC_SPACE:
+        case KC_ENTER:
+        case KC_RETURN:
+            return menu_handle_input(menu_input_enter);
+        case KC_UP:
+            return menu_handle_input(menu_input_up);
+        case KC_DOWN:
+            return menu_handle_input(menu_input_down);
+        case KC_LEFT:
+            return menu_handle_input(menu_input_left);
+        case KC_RIGHT:
+            return menu_handle_input(menu_input_right);
+        default:
+            return keep_processing;
+    }
+
+    // Note: menu_handle_input returns:
+    // - true if the key should be processed by QMK
+    // - false if the key was consumed by the menu
+}
+#endif
 
 #endif // OLED_ENABLE

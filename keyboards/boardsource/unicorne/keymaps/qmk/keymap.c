@@ -4,12 +4,17 @@
 #include "layers.h"
 
 #ifndef SECURE
-    #define SECURE ".oH?xVn2(W!c!}!1Tsp2[NZi"
+    #define SECURE "null"
 #endif
 
 enum custom_keycodes {
     SENDPW = SAFE_RANGE,
     MOUSOFF,
+};
+
+socd_cleaner_t socd_opposing_pairs[] = {
+    {{KC_E, KC_D}, SOCD_CLEANER_LAST},
+    {{KC_S, KC_F}, SOCD_CLEANER_LAST},
 };
 
   //////////////////////////////////////////////////////////////
@@ -60,6 +65,9 @@ enum custom_keycodes {
 #define CTSFESC RCS(KC_ESC)
 #define SYMBTAB LT(_NUMB, KC_TAB)
 #define LT_TAB LT(_SYMB, KC_TAB)
+#define CASEON SENTENCE_CASE_ON
+#define CASETOG SENTENCE_CASE_TOGGLE
+#define CASEOFF SENTENCE_CASE_OFF
 
 // For debugging: Show the value of SECURE during compilation
 // #pragma message("SECURE is defined as: " SECURE)
@@ -119,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
      KC_GRV,  PALETTE,  COPY_DN,  MOVE_UP,  COPY_UP,  C(KC_D),/*       */ KC_GRV,     KC_7,     KC_8,     KC_9,  KC_PMNS,  KC_BSPC,
     MO_LOWR,  C(KC_A),  KC_LEFT,  MOVE_DN,  KC_RGHT,  SELCTAL,/*       */KC_LBRC,     KC_4,     KC_5,     KC_6,  KC_RBRC,  KC_DEL,
-    KC_CAPS,  C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),  C(KC_Y),/*       */ KC_EQL,     KC_1,     KC_2,     KC_3,  KC_BSLS,  QK_LLCK,
+    KC_CAPS,  C(KC_Z),C(KC_DOT),  C(KC_C),  G(KC_V),  C(KC_Y),/*       */ KC_EQL,     KC_1,     KC_2,     KC_3,  KC_BSLS,  QK_LLCK,
     /*                          */KC_PGUP,  KC_PGDN,  _______,/*       */KC_MINS,     KC_0,   KC_DOT
 
     ),
@@ -138,9 +146,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NAVI] = LAYOUT_split_3x6_3(
 
        S_UP,  KC_HOME,   C_LEFT,    KC_UP,   C_RGHT,   KC_END,/*       */_______,  MS_WHLL,    MS_UP,  MS_WHLR,  MS_BTN5,  _______,
-     KC_TAB,   S_LEFT,  KC_LEFT,  KC_DOWN,  KC_RGHT,   S_RGHT,/*       */MS_WHLU,  MS_LEFT,  MS_DOWN,  MS_RGHT,  MS_BTN4,  MO_RAIS,
-    SFT_TAB,   S_HOME,  CS_LEFT,   S_DOWN,  CS_RGHT,    S_END,/*       */MS_WHLD,  MS_BTN1,  MS_BTN3,  MS_BTN2,  MS_BTN4,  QK_LLCK,
-    /*                          */C(KC_C),  C(KC_V),   KC_ENT,/*       */_______,  _______,  _______
+    SFT_TAB,   S_LEFT,  KC_LEFT,  KC_DOWN,  KC_RGHT,   S_RGHT,/*       */MS_WHLU,  MS_LEFT,  MS_DOWN,  MS_RGHT,  MS_BTN4,  MO_RAIS,
+    OSM_SFT,   S_HOME,  SELWBAK,   S_DOWN,  SELWORD,    S_END,/*       */MS_WHLD,  MS_BTN1,  MS_BTN3,  MS_BTN2,  MS_BTN4,  DS_MENU,
+    /*                          */C(KC_C),  C(KC_V),  SELLINE,/*       */_______,  _______,  _______
 
     ),
 
@@ -157,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // [5]
 [_MOUS] = LAYOUT_split_3x6_3(
 
-    _______,  _______,  _______,  _______,  MS_WHLL,  MS_WHLR,/*       */MS_WHLL,  MS_WHLR,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  MS_WHLL,  MS_WHLR,/*       */MS_WHLL,  MS_WHLR,  _______,  _______,  _______,    TURBO,
     _______,  _______,  _______,  _______,  MS_BTN5,  MS_WHLU,/*       */MS_WHLU,  MS_BTN5,  _______,  _______,  _______,  _______,
     _______,  _______,  _______,  _______,  MS_BTN4,  MS_WHLD,/*       */MS_WHLD,  MS_BTN4,  _______,  _______,  _______,  QK_LLCK,
     /*                          */MOUSOFF,  MS_BTN2,  MS_BTN1,/*       */MS_BTN1,  MS_BTN2,  MOUSOFF
@@ -177,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // [7]
 [_RAIS] = LAYOUT_split_3x6_3(
 
-    _______,  _______,  _______,  _______,  _______,  _______,/*       */CG_TOGG,  GE_SWAP,  AU_TOGG,  _______,  _______,  QK_BOOT,
+    _______,  _______,  CASEOFF,  CASETOG,   CASEON,  _______,/*       */CG_TOGG,  GE_SWAP,  AU_TOGG,  _______,  _______,  QK_BOOT,
     _______,  _______,  _______,  _______,  _______,  _______,/*       */AG_TOGG,  GE_NORM,  _______,  _______,  _______,  _______,
     _______,  _______,  _______,  _______,  _______,  _______,/*       */GU_TOGG,  _______,  _______,  _______,  _______,  QK_LLCK,
     /*                          */_______,  _______,  MO_MENU,/*       */_______,  _______,  _______
@@ -321,6 +329,18 @@ void caps_word_set_user(bool active) {
 
 void pointing_device_init_user(void) {
     set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
+}
+
+void keyboard_post_init_user(void) {
+  // Set the effect.
+  rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_PALETTEFX_FLOW);
+  // Set the palette and maximize saturation and brightness.
+  uint8_t palette_index = PALETTEFX_USER_0;  // Set first custom user palette.
+  rgb_matrix_sethsv_noeeprom(RGB_MATRIX_HUE_STEP * palette_index, 255, 255);
+  // Set speed to default.
+  rgb_matrix_set_speed_noeeprom(128);
+  // Make sure RGB Matrix is on.
+  rgb_matrix_enable_noeeprom();
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {

@@ -20,10 +20,12 @@
             "combo": true,
             "send_string": true,
             "caps_word": true,
-            "tap_dance": false
+            "tap_dance": false,
+            "os_detection": true
         },
         "tapping": {
             "permissive_hold": true,
+            "chordal_hold": true,
             "term": 200,
             "toggle": 3
         },
@@ -183,5 +185,14 @@
         "layer_lock": {
             "timeout": 10000
         }
-    }
+    },
+    "modules": [
+        "drashna/display_menu",
+        "getreuer/mouse_turbo_click",
+        "getreuer/palettefx",
+        "getreuer/select_word",
+        "getreuer/sentence_case",
+        "getreuer/socd_cleaner",
+        "getreuer/tap_flow"
+    ]
 }
