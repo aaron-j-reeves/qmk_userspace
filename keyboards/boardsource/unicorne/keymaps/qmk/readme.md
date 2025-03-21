@@ -24,5 +24,5 @@ git submodule add https://github.com/drashna/qmk_modules.git modules/drashna
 cd /path/to/your/external/userspace
 mkdir -p modules
 git submodule add https://github.com/{user}/{repo}.git modules/{user}
-git submdule update --init --recursive
+git submodule update --init --recursive
 ```
