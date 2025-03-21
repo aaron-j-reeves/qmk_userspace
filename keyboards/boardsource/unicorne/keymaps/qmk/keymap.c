@@ -2,7 +2,7 @@
 #pragma once
 #include QMK_KEYBOARD_H
 #include "layers.h"
-#include "../../../../../modules/getreuer/palettefx/palettefx.h"
+#include "palettefx.h"
 
 #ifndef SECURE
     #define SECURE "null"
@@ -146,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // [3]
 [_NAVI] = LAYOUT_split_3x6_3(
 
-       S_UP,  KC_HOME,   C_LEFT,    KC_UP,   C_RGHT,   KC_END,/*       */_______,  MS_WHLL,    MS_UP,  MS_WHLR,  MS_BTN5,  _______,
+       S_UP,  KC_HOME,   C_LEFT,    KC_UP,   C_RGHT,   KC_END,/*       */ KC_ENT,  MS_WHLL,    MS_UP,  MS_WHLR,  MS_BTN5,   KC_ESC,
     SFT_TAB,   S_LEFT,  KC_LEFT,  KC_DOWN,  KC_RGHT,   S_RGHT,/*       */MS_WHLU,  MS_LEFT,  MS_DOWN,  MS_RGHT,  MS_BTN4,  MO_RAIS,
     OSM_SFT,   S_HOME,  SELWBAK,   S_DOWN,  SELWORD,    S_END,/*       */MS_WHLD,  MS_BTN1,  MS_BTN3,  MS_BTN2,  MS_BTN4,  DS_MENU,
     /*                          */C(KC_C),  C(KC_V),  SELLINE,/*       */_______,  _______,  _______
