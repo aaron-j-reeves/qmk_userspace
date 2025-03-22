@@ -11,7 +11,7 @@
             "extrakey": true,
             "mousekey": true,
             "nkro": true,
-            "oled": true,
+            "oled": false,
             "rgb_matrix": true,
             "layer_lock": true,
             "command": false,
@@ -187,7 +187,7 @@
         }
     },
     "modules": [
-        "drashna/display_menu",
+        // "drashna/display_menu",
         "getreuer/mouse_turbo_click",
         "getreuer/palettefx",
         "getreuer/select_word",

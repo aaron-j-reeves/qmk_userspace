@@ -70,6 +70,10 @@ socd_cleaner_t socd_opposing_pairs[] = {
 #define CASETOG SENTENCE_CASE_TOGGLE
 #define CASEOFF SENTENCE_CASE_OFF
 
+#ifndef COMMUNITY_MODULE_DISPLAY_MENU_ENABLE
+#define DS_MENU KC_UP
+#endif
+
 // For debugging: Show the value of SECURE during compilation
 // #pragma message("SECURE is defined as: " SECURE)
 
@@ -182,7 +186,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*                         */ _______,  _______,  _______,/*       */MO_MENU,  _______,  _______
 
     ),
-
+ 
 // [7]
 [_RAIS] = LAYOUT_split_3x6_3(
 

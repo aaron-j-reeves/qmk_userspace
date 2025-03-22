@@ -1,11 +1,11 @@
 // oled.c
-
+#ifdef OLED_ENABLE
 #include QMK_KEYBOARD_H
 #include "layers.h"
-#include "oled_render_menu.h"
-#ifdef OLED_ENABLE
 
-// bool oled_render_menu(uint8_t col, uint8_t line, uint8_t num_of_lines, uint8_t menu_render_side);
+#ifdef (COMMUNITY_MODULE_DISPLAY_MENU_ENABLE)
+#include "oled_render_menu.h"
+#endif
 
 // oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 //     if (!is_keyboard_left()) {
@@ -46,12 +46,18 @@ void render_status(void) {
 }
 
 bool oled_task_user(void) {
+    ifdef (COMMUNITY_MODULE_DISPLAY_MENU_ENABLE)
     // Attempt to render the menu
     if (!oled_render_menu(0, 0, 16, 3)) {
         // If the menu is not active or rendering failed, render the default status
         render_status();
     }
 
+    return false; // Skip default rendering
+    #else
+
+    // If the menu is not active, render the default status
+    render_status();
     return false; // Skip default rendering
 }
 
