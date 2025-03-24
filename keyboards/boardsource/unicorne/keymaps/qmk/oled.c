@@ -55,7 +55,7 @@ bool oled_task_user(void) {
     }
 
     return false; // Skip default rendering
-    
+
 #else
 
     // If the menu is not active, render the default status
