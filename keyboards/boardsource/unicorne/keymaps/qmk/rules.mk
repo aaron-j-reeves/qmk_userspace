@@ -1,9 +1,5 @@
 # rules.mk
-
-ifdef COMMUNITY_MODULE_DISPLAY_MENU_ENABLE
 SRC += oled.c
-endif
-
 SRC += layers.c
 BOOTLOADER = rp2040
 
